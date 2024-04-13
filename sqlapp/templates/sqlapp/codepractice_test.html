@@ -1,0 +1,365 @@
+{% extends 'baseCodepracticeTest.html' %}
+{% block title %}コード問題一覧{% endblock %}
+{% block content %}
+
+
+{% load custom_filters %}
+
+    <!--折りたたみ上--> 
+    <div class="wrap">
+    {% include 'sqlapp/components/codepractice_test_q1th2.html' %}
+    {% include 'sqlapp/components/codepractice_test_q3_th3_no1.html' %}
+    {% include 'sqlapp/components/codepractice_test_q3_th3_no2.html' %}
+        
+
+    </div><!--wrap-->
+    <!--折りたたみおりたたみ下-->
+
+    <!-- モーダルウィンドウのHTML -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    
+    {% include 'sqlapp/components/codepractice/answer2.html' %}
+
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Slick Slider JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $('.carousel0').slick({
+            dots: true,
+            autoplay: false,
+            slidesToShow: 1,  // デフォルトではスライドを2つ表示
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 1, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+        });
+        $('.carousel0_2').slick({
+            dots: true,
+            autoplay: false,
+            slidesToShow: 2,  // デフォルトではスライドを2つ表示
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 1, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+        });
+        $('.carousel1').slick({
+            dots: true,
+            autoplay: false,
+            slidesToShow: 3,  // デフォルトではスライドを2つ表示
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 2, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+        });
+        $('.carousel2').slick({
+            dots: true,
+            autoplay: false,
+            // autoplaySpeed: 2000,
+            slidesToShow: 3,     // 一度に表示するスライドの数を2に設定
+            slidesToScroll: 1,   // 一度にスクロールするスライドの数を1に設定
+            responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 2, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+        });
+
+
+        $(document).ready(function() {
+            // 両方のカルーセルに対する初期設定
+            
+            switchCarouselContent('.carousel1', $('#carousel1-dropdown').val());
+            switchCarouselContent('.carousel2', $('#carousel2-dropdown').val());
+            
+            switchCarouselContent2('.carousel1', $('#carousel1-dropdown').val());
+            switchCarouselContent2('.carousel2', $('#carousel2-dropdown').val());
+
+
+            $('#carousel1-dropdown').on('change', function() {
+                let selectedValue = $(this).val();
+                switchCarouselContent('.carousel1', selectedValue);
+            });
+
+            $('#carousel2-dropdown').on('change', function() {
+                let selectedValue2 = $(this).val();
+                switchCarouselContent2('.carousel2', selectedValue2);
+            });
+
+
+
+
+            // カルーセル要素のクリックイベント
+            $('.carousel0 div, .carousel0_2 div').on('click', function() {
+                var content = $(this).html();
+                $('#modal-body').html(content);
+                $('#modal').show();
+            });
+
+            // モーダルを閉じる
+            $('#modal .close').on('click', function() {
+                $('#modal').hide();
+            });
+
+            // モーダル外をクリックしたときにモーダルを閉じる
+            $(window).on('click', function(e) {
+                if ($(e.target).is('#modal')) {
+                    $('#modal').hide();
+                }
+            });
+
+        });
+
+
+        
+        function switchCarouselContent(carouselClass, selectedValue) {
+            if (selectedValue === 'form1') {
+                $('.form1-content').show();
+                $('.form2-content').hide();
+            } else if (selectedValue === 'form2') {
+                $('.form1-content').hide();
+                $('.form2-content').show();
+            }
+
+            // console.log("Number of slides before unslick:", $(carouselClass + ' ' + contentClass + ' div').length);
+            setTimeout(function() {
+            // Slickスライダーの再初期化
+            if ($(carouselClass).hasClass('slick-initialized')) {
+                $(carouselClass).slick('unslick');
+            }
+            $(carouselClass).slick({
+                // ここにslickのオプションを設定
+                dots: true,
+                autoplay: false,
+                slidesToShow: 3,  // 一度に表示するスライドの数を2に設定
+                slidesToScroll: 1, // 一度にスクロールするスライドの数を1に設定
+                responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 2, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+                // 他に必要なオプションがあればここに追加
+            });
+            }, 500); 
+        }
+
+        function switchCarouselContent2(carouselClass, selectedValue2) {
+            if (selectedValue2 === 'form1') {
+                $('.form1-content2').show();
+                $('.form2-content2').hide();
+            } else if (selectedValue2 === 'form2') {
+                $('.form1-content2').hide();
+                $('.form2-content2').show();
+            }
+            // console.log("Number of slides before unslick:", $(carouselClass + ' ' + contentClass + ' div').length);
+            setTimeout(function() {
+            // Slickスライダーの再初期化
+            if ($(carouselClass).hasClass('slick-initialized')) {
+                $(carouselClass).slick('unslick');
+            }
+            $(carouselClass).slick({
+                // ここにslickのオプションを設定
+                dots: true,
+                autoplay: false,
+                slidesToShow: 3,  // 一度に表示するスライドの数を2に設定
+                slidesToScroll: 1, // 一度にスクロールするスライドの数を1に設定
+                responsive: [
+                {
+                    breakpoint: 1080, // 1080px以上の画面幅で適用される設定
+                    settings: {
+                        slidesToShow: 2, // 1080px以上の幅ではスライドを3つ表示
+                    }
+                }
+                // 必要に応じて他のブレークポイントも追加できます
+            ]
+                // 他に必要なオプションがあればここに追加
+            });
+            }, 500); 
+        }
+
+
+    </script>
+
+  
+
+<script>
+    document.querySelectorAll('.tab').forEach(tab => {
+     tab.addEventListener('click', function() {
+         // すべてのcontentAnsとnextLineボタンを非表示に
+         document.querySelectorAll('.contentAns').forEach(el => el.style.display = 'none');
+         document.querySelectorAll('.nextLine').forEach(btn => btn.style.display = 'none');
+
+         document.querySelectorAll('.hideLine').forEach(btn => btn.style.display = 'none');
+ 
+         // 対応するcontentAnsクラスを持つコンテンツを表示
+         const contentId = this.getAttribute('for').replace('label', 'content');
+         const content = document.querySelector('.' + contentId);
+         if (content) {
+             content.style.display = 'block';
+         }
+ 
+         // 対応するnextLineボタンを取得して表示
+         
+         const nextLineButtonId = this.getAttribute('for').replace('label', 'nextLine');
+         const nextLineButton = document.querySelector('.' + nextLineButtonId);
+ 
+         if (nextLineButton) {
+             nextLineButton.style.display = 'block';
+         }
+
+         
+         const hideLineButtonId = this.getAttribute('for').replace('label', 'hideLine');
+         const hideLineButton = document.querySelector('.' + hideLineButtonId);
+ 
+         if (hideLineButton) {
+             hideLineButton.style.display = 'block';
+         }
+     });
+ });
+     </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const button = document.getElementById('show-line-button');
+            const buttonHide1 = document.getElementById('hide-line-button1')
+            const answerDiv = document.getElementById('answer-content');
+            let currentLine = 0;
+    
+            button.addEventListener('click', () => {
+                if (currentLine < answerLines.length) {
+                    answerDiv.innerHTML += answerLines[currentLine] + '<br>';
+                    answerDiv.style.display = 'block';
+                    currentLine++;
+                }
+            });
+
+            buttonHide1.addEventListener('click', () => {
+                // 行を隠す処理
+                if (currentLine > 0) {
+                    currentLine--;
+                    answerDiv.innerHTML = answerLines.slice(0, currentLine).join('<br>');
+                }
+            });
+
+            const button2 = document.getElementById('show-line-button2');
+            const buttonHide2 = document.getElementById('hide-line-button2')
+            const answerDiv2 = document.getElementById('answer-content2');
+            let currentLine2 = 0;
+    
+            button2.addEventListener('click', () => {
+                if (currentLine2 < answerLines2.length) {
+                    answerDiv2.innerHTML += answerLines2[currentLine2] + '<br>';
+                    answerDiv2.style.display = 'block';
+                    currentLine2++;
+                }
+            });
+
+            buttonHide2.addEventListener('click', () => {
+                // 行を隠す処理
+                if (currentLine2 > 0) {
+                    currentLine2--;
+                    answerDiv2.innerHTML = answerLines2.slice(0, currentLine2).join('<br>');
+                }
+            });
+
+            const button3 = document.getElementById('show-line-button3');
+            const buttonHide3 = document.getElementById('hide-line-button3')
+            const answerDiv3 = document.getElementById('answer-content3');
+            let currentLine3 = 0;
+    
+            button3.addEventListener('click', () => {
+                if (currentLine3 < answerLines3.length) {
+                    answerDiv3.innerHTML += answerLines3[currentLine3] + '<br>';
+                    answerDiv3.style.display = 'block';
+                    currentLine3++;
+                }
+            });
+
+            buttonHide3.addEventListener('click', () => {
+                // 行を隠す処理
+                if (currentLine3 > 0) {
+                    currentLine3--;
+                    answerDiv3.innerHTML = answerLines3.slice(0, currentLine3).join('<br>');
+                }
+            });
+
+            const button4 = document.getElementById('show-line-button4');
+            const buttonHide4 = document.getElementById('hide-line-button4')
+            const answerDiv4 = document.getElementById('answer-content4');
+            let currentLine4 = 0;
+    
+            button4.addEventListener('click', () => {
+                if (currentLine4 < answerLines4.length) {
+                    answerDiv4.innerHTML += answerLines4[currentLine4] + '<br>';
+                    answerDiv4.style.display = 'block';
+                    currentLine4++;
+                }
+            });
+
+            buttonHide4.addEventListener('click', () => {
+                // 行を隠す処理
+                if (currentLine4 > 0) {
+                    currentLine4--;
+                    answerDiv4.innerHTML = answerLines4.slice(0, currentLine4).join('<br>');
+                }
+            });
+
+            const button5 = document.getElementById('show-line-button5');
+            const buttonHide5 = document.getElementById('hide-line-button5')
+            const answerDiv5 = document.getElementById('answer-content5');
+            let currentLine5 = 0;
+    
+            button5.addEventListener('click', () => {
+                if (currentLine < answerLines5.length) {
+                    answerDiv5.innerHTML += answerLines5[currentLine5] + '<br>';
+                    answerDiv5.style.display = 'block';
+                    currentLine5++;
+                }
+            });
+
+            buttonHide5.addEventListener('click', () => {
+                // 行を隠す処理
+                if (currentLine5 > 0) {
+                    currentLine5--;
+                    answerDiv5.innerHTML = answerLines5.slice(0, currentLine5).join('<br>');
+                }
+            });
+        });
+    </script>
+{% endblock content %}
+
+

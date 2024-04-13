@@ -1,0 +1,854 @@
+
+body {
+    font-family: 'Hannotate SC','HanziPen SC','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' !important;
+}
+main {
+    margin: 0 auto 0 auto;
+    
+}
+a {
+    text-decoration: none;
+}
+
+.navbar{
+    /*background-color: olivedrab !important;*/
+    background-color:white !important;
+    border: 2px dotted grey !important;
+    /*border-style: hidden double dashed;*/
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+} 
+/*
+.navbar-nav a{
+    color: #5B2E21 !important;
+}
+*/
+.nav-one-home a {
+    color: #5B2E21 !important;
+}
+.nav-one-practice a {
+    color: purple !important;
+}
+.nav-one-practicechoice a {
+    color: blue !important;
+}
+.nav-one-codepractice a {
+    color: #30583B !important;
+}
+.nav-one-test a {
+    color: #5B2E21 !important;
+}
+.nav-one-dataoperation a {
+    color: #CD4187 !important;
+}
+
+
+.nav-one{
+    border-right: solid;
+    border-color: grey;
+}
+
+
+
+label[for="id_shoseki"],label[for="id_new_shoseki"],label[for="id_shoseki_page"],label[for="id_question"],label[for="id_answer"],label[for="id_hint"],label[for="id_explanation"],label[for="id_thumbnail"],label[for="id_category"],label[for="id_new_category"]{
+    font-size: 10px !important;
+    font-weight: bold;
+    /* vertical-align: middle;  */
+}
+/*
+#id_shoseki {
+    font-size: 14px;
+}
+*/
+
+
+
+
+
+#id_shoseki, #id_shoseki_page, #id_question, #id_answer, #id_hint, #id_explanation, #id_category {
+    vertical-align: middle;
+    width: 90%;   
+}
+
+
+
+
+.font_size{
+    font-size: 12px !important;
+    vertical-align: middle !important;
+}
+label[for="id_find1"],label[for="id_find2"]{
+    font-size: 12px !important;
+}
+
+.choice4{
+    color:darkmagenta !important;
+}
+.choice10{
+    color:deeppink !important;
+}
+.choice20{
+    color:maroon !important;    
+}
+.choice30{
+    color:darkcyan !important;    
+}
+body{
+    /*background:url("/media/resource/topHaikei.jpg");*/
+    /*background:url("/media/resource/puzzle.png");*/
+    /*background-size:contain; */
+    background-color:rgba(249, 235, 235, 0.8);
+    background-color: white ;
+    background-blend-mode: lighten;
+}
+
+.bg-light {
+    --bs-bg-opacity: 0 !important;
+}
+.text-box .p-4:hover{
+    background-color: lightgray !important;
+    border-width: 3px !important;
+}
+.p-4 h3{
+    margin-bottom: 0.2rem !important;
+}
+.mt-3 {
+    margin-top: 0.2rem !important;
+}
+.h3, h3 {
+    /*font-size: calc(1rem + .4vw);*/
+    font-size: 0.9rem;
+}
+h4{
+    font-size: 0.8rem;
+}
+.m-4 {
+    margin: 0.6rem !important;
+}
+.mt-3 a{
+    /*color:darkgreen !important;*/
+    color:rgb(40,40,40) !important;
+}
+.mt-2 {
+    margin-top: 0rem!important;
+}
+
+  .nav-item a {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    /* アニメーション速度を指定 */
+    transition: color 0.3s ease-out;
+  }
+  .nav-item a:hover {
+    /* hover後に色を変化させる指定 */
+    color:black !important;
+    font-weight: bold !important;
+  }
+
+
+  .to-shousai a {
+    /*color:darkcyan !important;*/
+    color:dimgray !important;
+  }
+  .to-shousai:hover{
+    font-bold:weight !important;
+  }
+
+
+  .wrap {
+    margin: 2em 0;
+    padding: 0;
+  }
+
+  
+  .wrap .label0 {
+    display: block;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: #999;
+    cursor: pointer;
+    font-size: 14px !important;
+  }
+
+  
+  .kekka label {
+    display: block;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: #999;
+    /*cursor: pointer;*/
+  }
+  .form-control1, .form-control2, .form-control3{
+    width: 170px !important;
+    height: 32px !important;
+    vertical-align: middle !important;
+  }
+  
+  #id_answers{
+    /*border:1px;*/
+    /*font-size: 50% !important;*/
+    width: 210px;
+    height: 32px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+  }
+  /*検索ボタン*/
+  .btn-primary {
+    color: #fff;
+    /*background-color:darkblue !important;*/
+    background-color:darkred !important;
+    /*border-color: darkblue !important;*/
+    border-color: blue !important;
+}
+.btn-delete {
+    background-color:red !important;
+}
+@media screen and (min-width: 992px) {
+.mt-2{
+    text-align: right !important;
+    margin-left: 20px !important;
+    position:relative !important;
+    top: 0px !important;
+    }
+}
+@media screen and (max-width: 992px) {
+    .mt-2{
+        text-align: right !important;
+        /*margin-left: 20px !important;*/
+        margin-left: none !important;
+        position:relative !important;
+        top: 14px !important;
+        }
+    }
+.flex{
+    display: flex !important;
+}
+.flex p{
+    margin-right: 10px !important;
+    margin-left: 2px !important;
+}
+
+
+@media screen and (max-width: 570px) {
+    .navbar a{
+        font-size: 12px !important;
+    }
+    
+}
+    
+@media screen and (min-width: 570px) {
+    .navbar a{
+        font-size: 0.9rem !important;
+    }
+}
+
+.radio-plain{
+    top: 4px !important;
+    position: relative !important;
+    width: 90% !important;
+    margin-bottom: 30px;
+}
+
+.seikai{
+    color:blue !important;
+}
+.fuseikai{
+    color:red !important;
+}
+
+/*
+.ProductTable {
+    border: solid 1px #000000;
+    border-collapse: separate;
+    border-spacing: 0px 8px;
+}
+
+.ProductTable td {
+    border: solid 1px #000000;
+    border: solid 1px #007275;
+}
+*/
+
+.rotateX{
+    animation-name:rotateXAnime;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+@keyframes rotateXAnime{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotateX(-360deg);
+    }
+}
+
+.mondai{
+    /*font-size:calc(1.275rem + .3vw) !important;*/
+    /*font-size: calc(1.1rem + .1vw) !important;*/
+    font-size: 14px !important;
+}
+
+@media screen and (max-width: 775px) {
+
+    
+}
+
+
+
+.h2, h2 {
+    font-size: 12pt !important;
+}
+
+
+/*検索フォームの幅調整*/
+@media screen and (max-width: 768px) {
+    
+}
+
+.choice4, .choice10, .choice20, .choice30{
+    color: rgb(60,60,60) !important;
+    margin: 10px;
+}
+.choice4:hover, .choice10:hover, .choice20:hover, .choice30:hover{
+    /*background-color:rgba(30,30,30,1) !important;*/
+    color:white !important;
+    font-weight: bold !important;
+}
+.toQichiran{
+    margin: 10px;
+    background-color:black !important;
+    color: white !important;
+    border-radius: 3px;
+    padding: 6px;
+}
+
+.leftSpace{
+    margin-right: 20px;
+}
+
+.wrap {
+    margin: 1em 0 !important;
+}
+.detailMondaiColor{
+    color: black !important;
+}
+.detailKotaeColor{
+    color: brown !important;    
+}
+.detailKaisetsuColor{
+    color: navy !important;   
+}
+.detailThumbnailColor{
+    color: maroon !important;   
+}
+
+.detailShosekiColor{
+    color: grey !important;
+}
+.detailShosekiPageColor{
+    color: grey !important;
+}
+.testMonme{
+    font-weight: bold !important;
+    color:brown !important;
+}
+.testQuestion{
+    font-weight: bold !important;
+    color:brown !important;
+}
+.testYQ{
+    /*font-weight: bold !important;*/
+    color:grey !important;
+}
+.testQ{
+    /*font-weight: bold !important;*/
+    color:black !important;
+}
+.font_size12{
+    font-size: 12px !important;
+}
+/*
+.tableTestResult{
+    border:solid #333 1px !important;
+    border-collapse: separate !important;
+    border-color: #999 !important;
+}
+*/
+.tableTestResultTd{
+    /*border-style: solid !important;*/
+    border:solid #333 1px !important;
+    border-collapse: separate !important;
+    border-color: #999 !important;
+    display: table-cell !important;
+}
+form p{
+    margin: 0.5rem !important;
+}
+
+/*表裏スライド*/
+body,
+html,
+main
+{
+  height: 100%;
+  margin: auto 0;
+  font-family: 'Hannotate SC','HanziPen SC','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+}
+
+.fixed-bg {
+  min-height: 100%;
+  background-size: cover;
+  -webkit-background-size: cover !important; 
+  -moz-background-size: cover !important; 
+  -o-background-size: cover; 
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+  /*line-height: 1.5;  */  
+}
+
+h1 {
+  text-align: center;
+  /*font-size: 3.5em;*/
+  /*color: rgba(255, 255, 255, 1);*/
+  text-shadow: 1px 1px 10px #000, 5px 5px 20px #000, 1px 0px 20px #def;
+  opacity: 0.95;
+}
+main img {
+  width: 100%;
+  height: auto;
+}
+.main-text {
+  /*font-size: 5.5em;*/
+  /*line-height:0px;*/
+}
+
+main img{
+    opacity: 0.2;
+}
+.sub-text{
+  color:#fff;
+  /*line-height:0px;*/
+  text-shadow: 1px 1px 10px #000, 5px 5px 20px #000, 1px 0px 20px #def;
+}
+.text-box {
+  /*background: rgba(255, 255, 255, 0.95);*/
+    background-color: none;
+    padding: 20px;
+    margin: 0;
+    /*min-width: 500px;*/
+    width: 100% !important;
+}
+.fixed-bg h2 {
+  /*font-size: 4em;*/
+}
+.fixed-bg p {
+  text-align: center;
+ 
+}
+
+
+.bg-1-1{
+    background-image: url("/media/resource/greyHaikei2.jpg");
+    background-size: 50%;
+
+  }
+
+
+.bg-2 {
+  background-image: url("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+}
+.bg-2-1 {
+  background-image: url("https://images.unsplash.com/photo-1521227439113-619913356230?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+}
+.bg-3 {
+  background-image: url("https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+}
+.bg-3-1 {
+  background-image: url("https://images.unsplash.com/photo-1532186773960-85649e5cb70b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80");
+}
+
+
+
+.testStartButton{
+    padding: 1%;
+    text-align:center;
+}
+.thumbnailCenter{
+    width: 100% !important;
+    text-align: center;
+}
+tbody{
+    width: 100%;
+}
+
+
+  .imgPar {
+    text-align: center !important;
+    padding-top: 20px !important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-width: 1px !important;
+}
+.mondaiTable tbody, .mondaiTable td, .mondaiTable tfoot, .mondaiTable th, .mondaiTable thead, .mondaiTable tr{
+    border: none !important;
+}
+.routineFont{
+    font-size: 11px;
+    text-align: center;
+}
+.routineFont th{
+    font-size: 12px;
+    color: blue;
+    background-color: lightgray;
+}
+.routineFont td{
+    padding: 3px;
+}
+
+.container{
+    padding-left: 1% !important;
+    margin-left: 1% !important;
+}
+.flexFirst{
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+}
+.flexFirstKoko, .flexFirstButton{
+    vertical-align: middle !important;
+}
+.flexFirst{
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px !important;
+}
+.flexFirst table{
+    width: 100% !important;
+}
+#id_thumbnailQ1, #id_thumbnailQ2, #id_thumbnailQ3{
+    width: 35% !important;
+}
+
+
+td image{
+    width: 100% !important;
+}
+.p-4{
+    line-height: 15px !important;
+}
+
+
+
+.content1{
+    overflow:scroll;
+}
+
+.wrapHint {
+    color: orange;
+    margin: 30px 0 30px 0 !important;
+}
+
+.wrapAnswer{
+    margin-bottom: 30px;
+}
+.allForm {
+    padding: 2%;
+}
+.prevData {
+    padding: 1%;
+    /*background-color: rgba(230, 230, 230, .5);*/
+    background-color: cornsilk;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.prevData p {
+    margin: 0;
+}
+.prevData p a {
+    color: brown;
+}
+.prevDataTitle {
+    font-weight: bold;
+}
+.helptext {
+    font-size: 10px !important;
+    color: red;
+    white-space: pre-line;
+}
+#id_thumbnail {
+    font-size: 10px !important;
+}
+
+.scrollable-textarea {
+    overflow: auto;
+    /* 他のスタイル設定もここに追加できます */
+}
+.over11 {
+    color: red;
+    font-size: 12px;
+}
+.page-link {
+    color: darkslategray;
+    color: #5B2E21;
+}
+#id_new_shoseki {
+    width: 90%;
+    padding-bottom: 0;
+}
+
+#id_new_category {
+    width: 90%;
+    padding-bottom: 0;
+}
+
+
+#id_question1 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_question2 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_question3 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_req1 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_req2 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_req3 {
+    width: 90%;
+    padding-bottom: 0;
+}
+
+#id_answer1 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_answer2 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_answer3 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_answer4 {
+    width: 90%;
+    padding-bottom: 0;
+}
+#id_answer5 {
+    width: 90%;
+    padding-bottom: 0;
+}
+
+
+
+
+p .form-label {
+    /* display: block !important; */
+    /*display: block;*/
+}
+.helptext {
+    line-height: 1;
+    vertical-align: top;
+}
+
+.detailFont h2, .detailFont a{
+    font-size: 14px !important;
+}
+.detailFont {
+    border-color: rgba(220, 220, 220, 1) !important;
+    background-color: rgba(240, 240, 240, 1) !important;
+}
+.prevDataEx {
+    margin-top: 5px !important;
+    color: red;
+    font-size: 10px;
+}
+
+.btnCreate {
+    font-size: 14px;
+    width: 82px;
+    height: 35px;
+    color: white;
+    background-color: brown;
+}
+
+.btnTestStart {
+    width: 220px;
+    height: 35px;
+}
+
+.border-success {
+    border-color: rgba(100, 100, 100, 1) !important;
+}
+
+.testFlex {
+    display: flex;
+    justify-content: center;
+}
+.testLeft {
+    font-weight: bold;
+}
+.form-height {
+    height: 28.24px;
+}
+
+
+
+.hiddenMenu {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.hiddenMenu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.hiddenMenu a:hover {
+    background-color: #f1f1f1;
+}
+
+.yokonarabi{
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    /* background-color: transparent; */
+    background-color: #ecece7;
+    padding: 0 3% 3% 3%;
+}
+
+
+.yokonarabi p input:not([id*="clear"]) {
+    width: 100% !important;
+}
+
+.yokonarabi p textarea {
+    width: 100% !important;
+}
+.yokonarabi p select {
+    width: 100% !important;
+}
+.yokonarabi p a {
+    color: darkturquoise;
+    font-size: 12px;
+}
+
+
+/*SQL or Pandas */
+.form-control {
+    /* margin-bottom: 1em; */
+}
+.queryResult {
+    margin-top: 50px;
+}
+.sqlPandasTitle {
+    padding: 5px;
+    font-size: 20px;
+    background-color: floralwhite;
+}
+#id_mode {
+    margin-bottom: 20px;
+}
+#queryForm {
+    margin-top: 30px;
+}
+.buttonQuery1 {
+    margin-top: 20px;
+}
+.sqlPandas3_1 {
+    font-size: 14px;
+}
+.sqlPandas3_2 {
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.sqlPandas3_3 {
+    font-size: 14px;
+}
+.queryResult{
+    font-size: 12px;
+}
+
+
+/*ルーティン*/
+/* タブリンクのスタイル */
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    display: inline-block; /* インラインブロック要素に変更して、横に並べる */
+  }
+  
+/* タブコンテンツのスタイル */
+.tabcontent {
+display: none;
+padding: 6px 12px;
+border: 1px solid #ccc;
+border-top: none;
+
+/* margin-top: 5px; */
+}
+
+/* クリックされたタブの背景色 */
+.tab button.active {
+background-color: #ccc;
+}
+
+.tab button.tab1 { background-color: #f1f1f1; } /* 薄いグレー */
+.tab button.tab2 { background-color: #ffebeb; } /* 薄い赤 */
+.tab button.tab3 { background-color: #e8f4ff; } /* 薄い青 */
+.tab button.tab4 { background-color: #ffffe0; } /* ライトイエロー */
+.tab button.tab5 { background-color: #e6e6fa; } /* ラベンダー */
+.tab button.tab6 { background-color: #f0f8ff; } /* aliceblue */
+.tab button.tab7 { background-color: #ffc0cb; } /* ピンク */
+.tab button.tab8 { background-color: #e0ffff; } /* ライトシアン */
+.tab button.tab9 { background-color: #eee8aa; } /* palegoldenrod */
+.tab button.tab10 { background-color: #bc8f8f; } /* rosybrown */
+.tab button.tab11 { background-color: #f5f5dc; } /* ベージュ */
+.tab button.tab12 { background-color: #fff0f5; } /* lavenderblush */
+.tab button.tab13 { background-color: #ffdab9; } /* peachpuff */
+.tab button.tab14 { background-color: #f8f8ff; } /* ゴーストホワイト */
+.tab button.tab15 { background-color: #7fffd4; } /* アクアマリン */
+/* 必要に応じて更に色を追加 */
+
+
+.quota-input {
+    text-align: center;
+}
+
+.sqlPandasTitle {
+    margin-top: 5px;
+    padding: 1%;
+}
+

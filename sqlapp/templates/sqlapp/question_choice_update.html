@@ -1,0 +1,32 @@
+{% extends 'baseQuestionChoice.html' %}
+{% load static %}
+{% block title %}選択問題修正{% endblock %}
+
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+    <form method="POST" enctype="multipart/form-data" class="yokonarabi clearable-file-input">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="修正する">
+    </form>
+
+    {% load static %}
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var textareas = document.querySelectorAll('textarea');
+            textareas.forEach(function(textarea) {
+                // valueが空白ではなく、かつ20文字以上であるかをチェック
+                if (textarea.value.trim() !== '' && textarea.value.trim().length >= 20) {
+                    textarea.classList.remove('form-height');
+                }
+            });
+        });
+    </script>
+    <script src="{% static 'sqlapp/js/createQuestionChoice.js' %}"></script>
+    <script src="{% static 'sqlapp/js/changeQuestionChoice.js' %}"></script>
+    <script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>
+    
+{% endblock %}
+{% load static %}
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>

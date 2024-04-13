@@ -1,0 +1,33 @@
+<!-- １つ目 -->
+<label for="label0" class="label">▼ スライド0を表示 (「問題・要件」x 1 and「画像 (問題用)」x 2)</label>
+<input type="checkbox" id="label0" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content content0">
+
+<!--折りたたみ上--> 
+
+<div class="carousel-container">
+    <div class="carousel0 c0_1">
+    {% for field1 in form1 %}
+        {% if field1.value %}
+            <div>
+                {{ field1.value|linebreaksbr }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="carousel0_2 c0_1_2">
+    {% for field2 in form2 %}
+        {% if field2.value %}
+            <div>
+                <img src="{{ field2.value.url }}">
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+<!--折りたたみおりたたみ下--> 
+
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->

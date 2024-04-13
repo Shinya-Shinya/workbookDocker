@@ -1,0 +1,37 @@
+{% extends 'baseDataframe.html' %}
+
+{% block title %}Chynya Site{% endblock %}
+
+{% block content %}
+
+
+<div>
+<div class="table-wrap">{{ allList|safe }}</div>
+</div>
+<br />
+
+<form action="{% url 'appear-dataframe' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="textarea-wrap">
+    <textarea name="codearea" class="scrollable-textarea" id="" cols="30" rows="10"></textarea>
+    <input class="yuruFont" type="submit" id="button" name="name" value="button" >   
+    </div>
+
+</form>
+
+<br />
+
+<div>{{ result|safe }}</div>
+
+
+<br>
+
+
+
+
+
+
+
+
+
+{% endblock %}

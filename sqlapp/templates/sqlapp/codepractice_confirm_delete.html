@@ -1,0 +1,15 @@
+{% extends 'baseCodepractice.html' %}
+
+{% block title %}コード問題削除{% endblock %}
+{% block h1 %}コード問題削除{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>No. {{ object.id }}</p>
+        <p>[{{ object.question1|truncatechars:40 }}]</p>
+        <p>を削除してもいいですか？</p>
+        <button type="submit">削除</button>
+    </form>
+{% endblock %}

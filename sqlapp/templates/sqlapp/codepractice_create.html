@@ -1,0 +1,167 @@
+
+
+
+{% extends 'baseCodepractice.html' %}
+{% load static %}
+
+{% block title %}コード問題作成{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+{% if no_data_message %}
+    <p>{{ no_data_message }}</p>
+{% else %}
+<div border="1" style="border-color:lightgrey; font-size:12px; border-radius: 5px;" class="prevData">
+    <p class="prevDataTitle" style="font-weight: bold; font-size:16px !important;">1つ前の登録データ</p>
+    <p><span id="touroku1tsumaeShoseki">【{{ touroku1tsumaeShoseki|truncatechars:40 }}】　</span></p>
+    <p><span id="touroku1tsumaeQuestion1">{{ touroku1tsumaeQuestion|truncatechars:40 }}　</span>
+    <span id="touroku1tsumaePage">({{ touroku1tsumaePage }})　</span>
+    <a href="../{{ touroku1tsumaeId }}/detail/">詳細</a></p>
+    <p class="prevDataEx"> ※下記、「書籍・HP」をプルダウンから選択すると、その「書籍・HP」の前回登録データが表示されます。</p>
+</div>
+{% endif %}
+
+
+{% if fromList != "nashi" %}
+
+<div class="allForm">
+    <form method="POST" enctype="multipart/form-data" class="yokonarabi">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    <input type="submit" onclick="shocateFunc()" name="nameSakusei" value="作成する" class="btnCreate">
+    </form>
+</div>
+
+{% endif %}
+
+
+<!-- モーダルウィンドウのHTML -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+
+        <p id="modalLabel" style="font-weight: bold;"></p> <!-- ラベルを表示するための要素 -->
+        <textarea id="modalTextarea" style="width: 100%;"></textarea>
+    </div>
+</div>
+    
+<script>
+    function truncateString(str, num) {
+    if (str.length > num) {
+        return str.slice(0, num) + "...";
+    } else {
+        return str;
+    }
+}
+    document.getElementById("id_shoseki").addEventListener("change", function() {
+        var selectedShoseki = this.value;
+        fetch(`/get-previous-registration-data/?shoseki=${selectedShoseki}`)
+            .then(response => response.json())
+            .then(data => {
+                // HTML要素を更新するコードをここに記述
+                document.getElementById("touroku1tsumaeShoseki").textContent = `【${truncateString(data.touroku1tsumaeShoseki, 40)}】`;
+                document.getElementById("touroku1tsumaeQuestion1").textContent = truncateString(data.touroku1tsumaeQuestion1, 40);
+                document.getElementById("touroku1tsumaePage").textContent = `　(${truncateString(data.touroku1tsumaePage)})　`;
+            });
+    });
+</script>
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>
+<script src="{% static 'sqlapp/js/createCodepractice.js' %}"></script>
+<script src="{% static 'sqlapp/js/changeCodepractice.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+    let modal = document.getElementById("myModal");
+    let modalTextarea = document.getElementById("modalTextarea");
+    let closeBtn = document.getElementsByClassName("close")[0];
+    let currentTextarea = null;
+    let originalHeight = 0;
+    let isModalOpen = false;
+
+    document.querySelectorAll("textarea").forEach(function(textarea) {
+        textarea.addEventListener("click", function() {
+            if (!isModalOpen) {
+                currentTextarea = this;
+                let parentElement = this.parentElement;
+                let label = parentElement.querySelector("label");
+                if (label) {
+                    modalLabel.textContent = label.textContent;
+                } else {
+                    modalLabel.textContent = '';
+                }
+                originalHeight = this.offsetHeight;
+                modalTextarea.style.height = "300px"; // モーダルのテキストエリアの高さを固定
+                modalTextarea.value = this.value;
+                modal.style.display = "block";
+                isModalOpen = true;
+
+                // モーダル表示後にテキストエリアにフォーカスを設定
+                modalTextarea.focus();
+
+            }
+        });
+    });
+
+    closeBtn.onclick = function() {
+    modal.style.display = "none";
+    isModalOpen = false;
+    if (currentTextarea) {
+        currentTextarea.value = modalTextarea.value;
+
+        console.log(document.querySelector('.yokonarabi p:nth-child(6)'));
+
+
+        var textareas = document.querySelectorAll('textarea');   
+        textareas.forEach(function(textarea) {
+            // テキストエリアの内容から改行の個数をカウント
+            var lineBreakCount = (textarea.value.match(/\n/g) || []).length;
+            // 改行1つにつき27pxを高さに加算
+            var newHeight = 27 * (lineBreakCount + 1); // +1は初期行のため
+            textarea.classList.remove('form-height');
+            textarea.style.height = newHeight + 'px';
+        });
+
+        // 特定のpタグの表示状態を変更
+        var specificPTag = document.querySelector('.yokonarabi p:nth-child(6)');
+            if (currentTextarea.value != "") {
+                specificPTag.style.display = "block";
+            }
+
+    }
+};
+
+
+
+
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            isModalOpen = false;
+            if (currentTextarea) {
+                currentTextarea.value = modalTextarea.value;
+                let textareas = document.querySelectorAll('textarea');
+                
+                textareas.forEach(function(textarea) {
+                    // テキストエリアの内容から改行の個数をカウント
+                    let lineBreakCount = (textarea.value.match(/\n/g) || []).length;
+                    // 改行1つにつき27pxを高さに加算
+                    let newHeight = 27 * (lineBreakCount + 1); // +1は初期行のため
+                    textarea.classList.remove('form-height');
+                    textarea.style.height = newHeight + 'px';
+                });
+
+                
+            }
+        }
+    };
+
+    
+});
+
+
+</script>
+
+{% endblock %}

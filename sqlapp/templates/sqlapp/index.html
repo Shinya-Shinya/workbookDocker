@@ -1,0 +1,863 @@
+{% extends 'base.html' %}
+
+{% block title %}Chynya Site{% endblock %}
+
+{% block content %}
+
+
+<!--6/17-->
+<!--折りたたみ上--> 
+<div class="wrap">
+    <!-- １つ目 -->
+    <label for="label1" class="label">▼ Workbook進捗を表示</label>
+    <input type="checkbox" id="label1" class="switch1" />
+
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content content1">
+<p>
+<!--折りたたみ上-->
+
+
+<form action="{% url 'create-question' %}" method="get" enctype="multipart/form-data">
+{% csrf_token %}
+
+<table border="5" rules="all" class="routineFont">
+    <!--<tbody style="font-weight: bold;">ROUTINE</tbody>-->
+<tr><th rowspan="2">ROUTINE</th>
+    <td>Linux</td><td colspan="3">Python3</td><td>VBA</td><td>SQL</td><td colspan="2">DB SPECIALIST</td><td colspan="2">データ管理・分析</td><td colspan="3">情報技術者</td><td colspan="2">Deep Learning</td><td>簿記</td><td colspan="2">JAVA</td><td>英語</td>
+</tr>
+    
+        
+<tr><!--<th>ROUTINE</th>-->
+    
+    {% if sho == "LINUC教科書LINUCレベル1スピードマスター問題集 VERSION10.0対応" or sho == "LPICレベル1スピードマスター問題集" or sho == "Linuxコマンド200本ノック" or kategory == "linux" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameLinux" value="レベル1" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameLinux" value="レベル1"></td>
+    {% endif %}
+
+    {% if sho == "Python3エンジニア認定基礎試験Web問題" or sho == "Python3エンジニア認定基礎試験問題集" or sho == "基本情報技術者　らくらく突破PYTHON情報処理技術者試験" or kategory == "python3" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3" value="基礎" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3" value="基礎"></td>
+    {% endif %}
+
+    {% if sho == 'Python3エンジニア認定データ分析試験Web問題' or kategory == "python3d" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3D" value="データ分析" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3D" value="データ分析"></td>
+    {% endif %}
+
+    {% if sho == 'Python3エンジニア認定実践試験Web問題' or kategory == "python3jissen" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3Jissen" value="実践" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3Jissen" value="実践"></td>
+    {% endif %}
+
+    {% if sho == 'Access VBA スタンダード' or sho == "【新試験対応】　VBAエキスパート試験　対策問題集　Access VBA スタンダード<1-5章>" or kategory == "accessvba" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameAccessVBA" value="Access" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameAccessVBA" value="Access"></td>
+    {% endif %}
+    
+    
+    
+    {% if sho == "Bronze 12c SQL 基礎問題集" or kategory == "sql" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameSQL" value="Bronze" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameSQL" value="Bronze"></td>
+    {% endif %}
+    
+    
+
+    {% if sho == "データベーススペシャリスト教科書令和4年度" or kategory == "dbs" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBS" value="A" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBS" value="A"></td>
+    {% endif %}
+    </form>
+
+    <form action="{% url 'create-question2' %}" method="get" enctype="multipart/form-data">
+    {% if kategory == "dbsB" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBSB" value="B" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBSB" value="B"></td>
+    {% endif %}
+    </form>
+
+    <form action="{% url 'create-question' %}" method="get" enctype="multipart/form-data">
+    {% if sho == '統計検定2級　模擬問題集1' or sho == '統計検定2級　模擬問題集2' or sho == '統計検定2級公式問題集CBT対応板' or kategory == "toukei" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToukei" value="統計検定" style="background-color:hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToukei" value="統計検定"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略データサイエンティスト検定リテラシーレベル問題集" or kategory == "datascientist" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDataScientist" value="DATA SCIENTIST" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDataScientist" value="DATA SCIENTIST"></td>
+    {% endif %}
+
+    {% if sho == 'キタミ式ITイラスト塾　基本情報技術者　令和02年' or sho == 'かんたん合格基本情報技術者過去問題集　令和元年度秋期かんたん合格シリーズ' or sho == 'かんたん合格基本情報技術者過去問題集　令和2年度春期かんたん合格シリーズ' or sho == '令和03年イメージ&クレバー方式でよくわかる栢木先生の基本情報技術者教室　情報処理技術者試験' or kategory == "kihon" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihon" value="基本A" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihon" value="基本A"></td>
+    {% endif %}
+    </form>
+
+    <form action="{% url 'create-question2' %}" method="get" enctype="multipart/form-data">
+    {% if kategory == "kihonB" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihonB" value="基本B" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihonB" value="基本B"></td>
+    {% endif %}
+    </form>
+
+    <form action="{% url 'create-question' %}" method="get" enctype="multipart/form-data">
+    {% if sho == 'キタミ式ITイラスト塾　応用情報技術者　令和03年' or sho == '令和04年【春期】　応用情報技術者　過去問題集' or sho == '応用情報技術者　試験によくでる問題集【午後】' or kategory == "ouyou" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameOuyou" value="応用" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameOuyou" value="応用"></td>
+    {% endif %}
+
+    {% if sho == "ディープラーニングG検定ジェネラリスト要点整理テキスト&問題集" or kategory == "gkentei" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameG" value="G検定" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameG" value="G検定"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略ディープラーニングE資格エンジニア問題集" or kategory == "eshikaku" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameEshikaku" value="E資格" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameEshikaku" value="E資格"></td>
+    {% endif %}
+
+    {% if sho == "パブロフ流でみんな合格　日商簿記２級　商業簿記　テキスト＆問題集" or kategory == "boki2" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameBoki2" value="2級" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameBoki2" value="2級"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略 Java SE Bronze 問題集" or sho == "スッキリわかるJava入門第3版" or kategory == "JAVA" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJava" value="SE Bronze" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJava" value="SE Bronze"></td>
+    {% endif %}
+
+    {% if kategory == "JAVAB" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJavaB" value="SE Bronze B" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJavaB" value="SE Bronze B"></td>
+    {% endif %}
+
+    {% if sho == "新TOEIC TEST 頻出1200語" or kategory == "TOEIC" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToeic" value="TOEIC" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToeic" value="TOEIC"></td>
+    {% endif %}
+</tr>
+
+</form>
+<!--5/5最後-->
+
+<tr><th>必須</th>
+
+    {% if linuxCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</div>
+    {% else %}
+    <td>{{ linuxCount }}/1</div>
+    {% endif %}
+    
+    {% if python3Count >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ python3Count }}/1</td>
+    {% endif %}
+    
+    {% if python3dataBunsekiCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ python3dataBunsekiCount }}/1</td>
+    {% endif %}
+    
+    {% if python3JissenCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <!--<td>{{ python3JissenCount }}/1</td>-->
+    <td></td>
+    {% endif %}
+    
+    {% if accessVBACount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ accessVBACount }}/1</td>
+    {% endif %}
+    
+    
+    {% if sqlCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ sqlCount }}/1</td>
+    {% endif %}
+        
+    
+    {% if databaseSpecialistCount >= 1 %}
+    <td style="background-color:lightskyblue"> 1/1</td>
+    {% else %}
+    <!--<td>{{ databaseSpecialistCount }}/1</td>-->
+    <td></td>
+    {% endif %}
+
+    {% if databaseSpecialistBCount >= 1 %}
+    <td style="background-color:lightskyblue"> 1/1</td>
+    {% else %}
+    <!--<td>{{ databaseSpecialistCount }}/1</td>-->
+    <td>0/1</td>
+    {% endif %}
+    
+    {% if toukeikenteiCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ toukeikenteiCount }}/1</td>
+    {% endif %}
+    
+    {% if dataScientistCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ dataScientistCount }}/1</td>
+    {% endif %}
+    
+    {% if kihonjouhouCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ kihonjouhouCount }}/1</td>
+    {% endif %}
+
+    {% if kihonjouhouBCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ kihonjouhouBCount }}/1</td>
+    {% endif %}
+    
+    {% if ouyoujouhouCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ ouyoujouhouCount }}/1</td>
+    {% endif %}
+    
+    {% if gkenteiCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ gkenteiCount }}/1</td>
+    {% endif %}
+    {% if eShikakuCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <!--<td>{{ eShikakuCount }}/1</td>-->
+    <td></td>
+    {% endif %}
+    
+    {% if boki2Count >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ boki2Count }}/1</td>
+    {% endif %}
+    
+    
+    {% if javaCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ javaCount }}/1</td>
+    {% endif %}
+
+    {% if javaBCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ javaBCount }}/1</td>
+    {% endif %}
+
+    {% if toeicCount >= 1 %}
+    <td style="background-color:lightskyblue">1/1</td>
+    {% else %}
+    <td>{{ toeicCount }}/1</td>
+    {% endif %}
+
+<tr><th>+α</th>
+{% load mathfilters %}
+
+{% if linuxCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</div>
+{% elif linuxCount >= 1 %}
+<td>{{ linuxCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</div>
+{% endif %}
+
+{% if python3Count >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif python3Count >= 1 %}
+<td>{{ python3Count|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3dataBunsekiCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif python3dataBunsekiCount >= 1 %}
+<td>{{ python3dataBunsekiCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3JissenCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif python3JissenCount >= 1 %}
+<td>{{ python3JissenCount|sub:1 }}/2</div>
+{% else %}
+<!--<td>{{ python3JissenCount }}/2</td>-->
+<td></td>
+{% endif %}
+
+{% if accessVBACount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif accessVBACount >= 1 %}
+<td>{{ accessVBACount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+{% if sqlCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif sqlCount >= 1 %}
+<td>{{ sqlCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+
+{% if databaseSpecialistCount >= 3 %}
+<td style="background-color:lightskyblue"> 2/2</td>
+{% elif databaseSpecialistCount >= 1 %}
+<td>{{ databaseSpecialistCount|sub:1 }}/2</div>
+{% else %}
+<!--<td>{{ databaseSpecialistCount }}/2</td>-->
+<td></td>
+{% endif %}
+
+{% if databaseSpecialistBCount >= 3 %}
+<td style="background-color:lightskyblue"> 2/2</td>
+{% elif databaseSpecialistBCount >= 1 %}
+<td>{{ databaseSpecialistBCount|sub:1 }}/2</div>
+{% else %}
+<td>0/1</td>
+<!--<td>{{ databaseSpecialistBCount }}/2</td>-->
+{% endif %}
+
+{% if toukeikenteiCount >= 2 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif toukeikenteiCount >= 1 %}
+<td>{{ toukeikenteiCount|sub:1 }}/1</div>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if dataScientistCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif dataScientistCount >= 1 %}
+<td>{{ dataScientistCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if kihonjouhouCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif kihonjouhouCount >= 1 %}
+<td>{{ kihonjouhouCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if kihonjouhouBCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif kihonjouhouBCount >= 1 %}
+<td>{{ kihonjouhouBCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if ouyoujouhouCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif ouyoujouhouCount >= 1 %}
+<td>{{ ouyoujouhouCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if gkenteiCount >= 3 %}
+<td style="background-color:lightskyblue">2/2</td>
+{% elif gkenteiCount >= 1 %}
+<td>{{ gkenteiCount|sub:1 }}/2</div>
+{% else %}
+<td>0/2</td>
+{% endif %}
+{% if eShikakuCount >= 3 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif eShikakuCount >= 1 %}
+<td>{{ eShikakuCount|sub:1 }}/1</div>
+{% else %}
+<!--<td>{{ eShikakuCount }}/1</td>-->
+<td></td>
+{% endif %}
+
+{% if boki2Count >= 2 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif boki2Count >= 1 %}
+<td>{{ boki2Count|sub:1 }}/1</div>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+
+{% if javaCount >= 2 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif javaCount >= 1 %}
+<td>{{ javaCount|sub:1 }}/1</div>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if javaBCount >= 2 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif javaBCount >= 1 %}
+<td>{{ javaBCount|sub:1 }}/1</div>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if toeicCount >= 2 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% elif toeicCount >= 1 %}
+<td>{{ toeicCount|sub:1 }}/1</div>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+
+</tr>
+<tr><th>+β</th>
+
+
+{% if linuxCount >= 5 %}
+<td style="background-color:paleturquoise">{{ linuxCount|sub:3 }}/2</td>
+{% elif linuxCount >= 3 %}
+<td>{{ linuxCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3Count >= 5 %}
+<td style="background-color:paleturquoise">{{ python3Count|sub:3 }}/2</td>
+{% elif python3Count >= 3 %}
+<td>{{ python3Count|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3dataBunsekiCount >= 5 %}
+<td style="background-color:paleturquoise">{{ python3dataBunsekiCount|sub:3 }}/2</td>
+{% elif python3dataBunsekiCount >= 3 %}
+<td>{{ python3dataBunsekiCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3JissenCount >= 5 %}
+<td style="background-color:paleturquoise">{{ python3JissenCount|sub:3 }}/2</td>
+{% elif python3JissenCount >= 3 %}
+<td>{{ python3JissenCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if accessVBACount >= 5 %}
+<td style="background-color:paleturquoise">{{ accessVBACount|sub:3 }}/2</td>
+{% elif accessVBACount >= 3 %}
+<td>{{ accessVBACount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+
+
+{% if sqlCount >= 5 %}
+<td style="background-color:paleturquoise">{{ sqlCount|sub:3 }}/2</td>
+{% elif sqlCount >= 3 %}
+<td>{{ sqlCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+
+{% if databaseSpecialistCount >= 5 %}
+<td style="background-color:paleturquoise">{{ databaseSpecialistCount|sub:3 }}/2</td>
+{% elif databaseSpecialistCount >= 3 %}
+<td>{{ databaseSpecialistCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if databaseSpecialistBCount >= 5 %}
+<td style="background-color:paleturquoise">{{ databaseSpecialistBCount|sub:3 }}/2</td>
+{% elif databaseSpecialistBCount >= 3 %}
+<td>{{ databaseSpecialistBCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if toukeikenteiCount >= 3 %}
+<td style="background-color:paleturquoise">{{ toukeikenteiCount|sub:2 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if dataScientistCount >= 5 %}
+<td style="background-color:paleturquoise">{{ dataScientistCount|sub:3 }}/2</td>
+{% elif dataScientistCount >= 3 %}
+<td>{{ dataScientistCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if kihonjouhouCount >= 5 %}
+<td style="background-color:paleturquoise">{{ kihonjouhouCount|sub:3 }}/2</td>
+{% elif kihonjouhouCount >= 3 %}
+<td>{{ kihonjouhouCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if kihonjouhouBCount >= 5 %}
+<td style="background-color:paleturquoise">{{ kihonjouhouBCount|sub:3 }}/2</td>
+{% elif kihonjouhouBCount >= 3 %}
+<td>{{ kihonjouhouBCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if ouyoujouhouCount >= 5 %}
+<td style="background-color:paleturquoise">{{ ouyoujouhouCount|sub:3 }}/2</td>
+{% elif ouyoujouhouCount >= 3 %}
+<td>{{ ouyoujouhouCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if gkenteiCount >= 5 %}
+<td style="background-color:paleturquoise">{{ gkenteiCount|sub:3 }}/2</td>
+{% elif gkenteiCount >= 3 %}
+<td>{{ gkenteiCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if eShikakuCount >= 2 %}
+<td style="background-color:paleturquoise">{{ eShikakuCount|sub:3 }}/1</td>
+{% elif eShikakuCount >= 1 %}
+<td>{{ eShikakuCount|sub:1 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if boki2Count >= 3 %}
+<td style="background-color:paleturquoise">{{ boki2Count|sub:2 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if javaCount >= 3 %}
+<td style="background-color:paleturquoise">{{ javaCount|sub:2 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if javaBCount >= 3 %}
+<td style="background-color:paleturquoise">{{ javaBCount|sub:2 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if toeicCount >= 3 %}
+<td style="background-color:paleturquoise">{{ toeicCount|sub:2 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+</tr>
+</table>
+    
+
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+</div><!--wrap-->
+<!--折りたたみおりたたみ下-->
+
+
+<h3 class="purple">Daily</h3>
+<table border="5" rules="all">
+    <form action="{% url 'create-diary' %}" method="post" class="form-inline">
+    {% if diaryTodayCount > 0 %}
+        <tr style="background-color: lightblue;"><td class="col1">1</td><td class="col2">　済　</td><td class="col3"><a class="toQichiran" href="diary/{{ lastQuery }}/update/">Diary更新</a></td><td class="col4">-</td><td class="col5">アウトプット重要</td></tr>
+    {% else %}
+        <tr><td class="col1">1</td><td class="col2">　未　</td><td class="col3"><a class="toQichiran" href="{% url 'create-diary' %}">Diary登録</a></td><td class="col4">-</td><td class="col5">アウトプット重要</td></tr>
+    {% endif %}
+    </form>
+
+    {% if ouyoujouhouCount > 0 and kihonjouhouCount > 0 and kihonjouhouBCount > 0 and toukeikenteiCount > 0 and python3Count > 0 and sqlCount > 0 and gkenteiCount > 0 and linuxCount > 0 and dataScientistCount and boki2Count > 0 and javaCount > 0 and toeicCount > 0 %}
+        <tr style="background-color: lightblue;"><td>2</td><td>　済　</td><td><a class="toQichiran" href="{% url 'create-question' %}">Workbook routine</a></td><td>-</td><td>幅広い知識。積み重ね。</td></tr>
+    {% else %}
+        <tr><td>2</td><td>　未　</td><td><a class="toQichiran" href="{% url 'create-question' %}">Workbook routine</a></td><td>-</td><td>幅広い知識。積み重ね。</td></tr>
+    {% endif %}
+    
+    {% if testRoutineCount10 >= 1 %}
+        <tr style="background-color: lightblue;"><td>3</td><td>　済　</td><td><a class="toQichiran" href="{% url 'test-question' %}">小TEST10問</a></td><td>-</td><td>脳に浸透。</td></tr>
+    {% else %}
+        <tr><td>3</td><td>　未　</td><td><a class="toQichiran" href="{% url 'test-question' %}">小TEST10問</a></td><td>-</td><td>脳に浸透。</td></tr>
+    {% endif %}
+
+    
+    <form action="{% url 'test-question' %}" method="post" class="form-inline">
+        {% csrf_token %}
+    {% if testRoutine10Python3Count > 0 %}
+        <tr style="background-color: lightblue;"><td>4</td><td>　済　</td><td><input type="submit" name="namePython3test" value="【テスト対策】Python3　基礎 10問"></td><td>-</td><td>10月末迄に受けたい。登録済みから。</td></tr>
+        <input type="hidden" name="testCategoryP" value="【テスト対策】Python3　基礎 10問" class="btn btn-primary mt-2">
+    {% else %}
+        <tr><td>4</td><td>　未　</td><td><input type="submit" name="namePython3test" value="【テスト対策】Python3　基礎 10問"></td><td>-</td><td>10月末迄に受けたい。登録済みから。</td></tr>
+        <input type="hidden" name="testCategoryP" value="【テスト対策】Python3　基礎 10問" class="btn btn-primary mt-2">
+    {% endif %}
+    
+    {% if testRoutine10Python3DBCount > 0 %}
+        <tr style="background-color: lightblue;"><td>5</td><td>　済　</td><td><input type="submit" name="namePython3DBtest" value="【テスト対策】Python3　データ分析 10問"></td><td>-</td><td>10月末迄に受けたい。登録済みから。</td></tr>
+        <input type="hidden" name="testCategoryDB" value="【テスト対策】Python3　データ分析 10問" class="btn btn-primary mt-2">
+    {% else %}
+        <tr><td>5</td><td>　未　</td><td><input type="submit" name="namePython3DBtest" value="【テスト対策】Python3　データ分析 10問"></td><td>-</td><td>10月末迄に受けたい。登録済みから</td></tr>
+        <input type="hidden" name="testCategoryDB" value="【テスト対策】Python3　データ分析 10問" class="btn btn-primary mt-2">
+    {% endif %}
+    </form>
+
+    <form action="{% url 'create-diary' %}" method="post" class="form-inline">
+    {% csrf_token %}
+    {% if python3jissenDiaryCount %}
+    <tr style="background-color: lightblue;"><td>6</td><td>　済　</td><td><input type="submit" name="namePython3Jissen" value="【テスト対策】Python3　実践"></td><td>kindle</td><td>10月末迄に受けたい。読書。</td></tr>
+    <input type="hidden" name="testCategoryJ" value="【テスト対策】Python3　実践" class="btn btn-primary mt-2">
+    {% else %}
+    <tr><td>6</td><td>　未　</td><td><input type="submit" name="namePython3Jissen" value="【テスト対策】Python3　実践"></td><td>kindle</td><td>10月末迄に受けたい。読書。</td></tr>
+    <input type="hidden" name="testCategoryJ" value="【テスト対策】Python3　実践" class="btn btn-primary mt-2">
+    {% endif %}
+    </form>
+
+
+    <form action="{% url 'create-question' %}" method="post" class="form-inline">
+    {% csrf_token %}
+    {% if kihonACount > 4 %}
+        <tr style="background-color: lightblue;"><td>7</td><td>　済　</td><td><input type="submit" name="nameFind" value="【テスト対策】基本情報技術者試験　科目A　"></td><td>kindle　Udemy</td><td>9月末迄に受けたい。新規に登録する。</td></tr>
+    {% else %}
+        <tr><td>7</td><td>　未　</td><td><input type="submit" name="nameFind" value="【テスト対策】基本情報技術者試験　科目A　"></td><td>kindle　Udemy</td><td>9月末迄に受けたい。新規に登録する。</td></tr>
+    {% endif %}
+
+    </form>
+
+
+    <form action="{% url 'create-question2' %}" method="post" class="form-inline">
+    {% csrf_token %}
+    {% if kihonBCount > 0 %}
+        <tr style="background-color: lightblue;"><td>8</td><td>　済　</td><td><input type="submit" name="nameFind" value="【テスト対策】基本情報技術者試験　科目B　"></td><td>kindle　Udemy</td><td>9月末迄に受けたい。新規に登録する。</td></tr>
+    {% else %}
+        <tr><td>8</td><td>　未　</td><td><input type="submit" name="nameB" value="【テスト対策】基本情報技術者試験　科目B　"><input type="hidden" name="nameBhidden" value="valueBhidden"></td><td>kindle　Udemy</td><td>9月末迄に受けたい。新規に登録する。</td></tr>
+    {% endif %}
+
+    </form>
+
+
+    {% if testRoutineDiaryCount > 0 %}
+        <tr style="background-color: lightblue;"><td>9</td><td>-</td><td>Lineスタンプ</td><td>Excel</td><td>1日1個で年間12セット。稼ぐ術。</td></tr>
+    {% else %}
+        <tr><td>9</td><td>　未　</td><td>Lineスタンプ</td><td>Excel</td><td>1日1個で年間12セット。稼ぐ術。</td></tr>
+    {% endif %}
+
+    {% if englishNewsCount >= 1 %}
+        <tr style="background-color: lightblue;"><td>10</td><td>　済　</td><td><a class="toQichiran" href="{% url 'create-english' %}">English News</a>　</td><td><a href="https://japannews.yomiuri.co.jp/" target="_blank">記事</a></td><td>最低1記事。英語に慣れる、時事単語を覚える、が目的。</td></tr>
+    {% else %}
+        <tr><td>10</td><td>　未　</td><td><a class="toQichiran" href="{% url 'create-english' %}">English News</a>　</td><td><a href="https://japannews.yomiuri.co.jp/" target="_blank">記事</a></td><td>最低1記事。英語に慣れる、時事単語を覚える、が目的。</td></tr>
+    {% endif %}
+
+
+    <form action="{% url 'create-diary' %}" method="post" class="form-inline">
+    {% csrf_token %}
+    {% if pandasRoutineDiaryCount > 0 %}
+        <tr style="background-color: lightblue;"><td>11</td><td>　済　</td><td><input type="submit" name="nameDiaryPandas" value="Pandas"></td><td>kindle</td><td>データサイエンス100本ノック　①cd ~/desktop/100knocks-preprocess-master　②docker compose -d up</td></tr>
+    {% else %}
+        <tr><td>11</td><td>　未　</td><td><input type="submit" name="nameDiaryPandas" value="Pandas"></td><td>kindle</td><td>データサイエンス100本ノック　①cd ~/desktop/100knocks-preprocess-master　②docker compose -d up</td></tr>
+    {% endif %}
+    
+    {% if sqlRoutineDiaryCount > 0 %}
+        <tr style="background-color: lightblue;"><td>12</td><td>　済　</td><td><input type="submit" name="nameDiarySQL" value="SQL"></td><td>kindle</td><td>データサイエンス100本ノック　①cd ~/desktop/100knocks-preprocess-master　②docker compose -d up</td></tr>
+    {% else %}
+        <tr><td>12</td><td>　未　</td><td><input type="submit" name="nameDiarySQL" value="SQL"></td><td>kindle</td><td>データサイエンス100本ノック　①cd ~/desktop/100knocks-preprocess-master　②docker compose -d up</td></tr>
+    {% endif %}
+    </form>
+
+    {% if anyOneCount > 0 %}
+        <tr style="background-color: lightblue;"><td>13</td><td>　済　</td><td>どれか一つ / 日</td><td>-</td><td>下記、選択肢</td></tr>
+    {% else %}
+        <tr><td>13</td><td>　未　</td><td>どれか一つ / 日</td><td>-</td><td>下記、選択肢</td></tr>
+    {% endif %}
+        
+
+</table>
+
+<br />
+
+
+
+<h3>Any one / 日</h3>
+<table border="5" rules="all">
+    <form action="{% url 'create-diary' %}" method="post" class="form-inline">
+    {% csrf_token %}
+
+    {% if reactCount %}
+    <tr style="background-color: lightblue;"><td class="col1">1</td><td class="col2">-</td><td class="col3"><input type="submit" name="nameReact" value="React.js"></td><td class="col4">kindle</td><td class="col5">・React 実践の教科書　・django rest framewoekから改修も</td></tr>
+    {% else %}
+    <tr><td class="col1">1</td><td class="col2">-</td><td class="col3"><input type="submit" name="nameReact" value="React.js"></td><td class="col4">kindle</td><td class="col5">・React 実践の教科書　・django rest framewoekから改修も</td></tr>
+    {% endif %}
+    
+    {% if vueCount %}
+    <tr style="background-color: lightblue;"><td>2</td><td>-</td><td><input type="submit" name="nameVue" value="Vue.js"></td><td>kindle</td><td>・Javascript/Vue.jsの教科書 　・django rest framewoekから改修も</td></tr>
+    {% else %}
+    <tr><td>2</td><td>-</td><td><input type="submit" name="nameVue" value="Vue.js"></td><td>kindle</td><td>・Javascript/Vue.jsの教科書 　・django rest framewoekから改修も</td></tr>
+    {% endif %}
+    
+    {% if typescriptCount %}
+    <tr style="background-color: lightblue;"><td>3</td><td>-</td><td><input type="submit" name="nameTypescript" value="Typescript"></td><td>kindle</td><td>手を動かしながら学ぶTypescript</td></tr>
+    {% else %}
+    <tr><td>3</td><td>-</td><td><input type="submit" name="nameTypescript" value="Typescript"></td><td>kindle</td><td>手を動かしながら学ぶTypescript</td></tr>
+    {% endif %}
+    
+    {% if fastapiCount %}
+    <tr style="background-color: lightblue;"><td>4</td><td>-</td><td><input type="submit" name="nameFastAPI" value="Fast API"></td><td>kindle</td><td>FastAPI開発入門</td></tr>
+    {% else %}
+    <tr><td>4</td><td>-</td><td><input type="submit" name="nameFastAPI" value="Fast API"></td><td>kindle</td><td>FastAPI開発入門</td></tr>
+    {% endif %}
+    
+    {% if linuxDiaryCount %}
+    <tr style="background-color: lightblue;"><td>5</td><td>-</td><td><input type="submit" name="nameLinuxDiary" value="Linux"></td><td>kindle</td><td>Linuxコマンド200本ノック</td></tr>
+    {% else %}
+    <tr><td>5</td><td>-</td><td><input type="submit" name="nameLinuxDiary" value="Linux"></td><td>kindle</td><td>Linuxコマンド200本ノック</td></tr>
+    {% endif %}
+    
+    {% if phpCount %}
+    <tr style="background-color: lightblue;"><td>6</td><td>-</td><td><input type="submit" name="namePHP" value="PHP"></td><td>kindle</td><td>PHP7 + MySQL</td></tr>
+    {% else %}
+    <tr><td>6</td><td>-</td><td><input type="submit" name="namePHP" value="PHP"></td><td>kindle</td><td>PHP7 + MySQL</td></tr>
+    {% endif %}
+
+    </form>
+</table>
+
+<br>
+
+<h3>Daily 余裕あれば</h3>
+<table border="5" rules="all">
+    {% if testRoutineCount >= 1 %}
+        <tr style="background-color: lightblue;"><td>4</td><td>　済　</td><td><a class="toQichiran" href="{% url 'test-question' %}">小TEST40問</a></td><td></td></tr>
+    {% else %}
+        <tr><td>4</td><td>　未　</td><td><a class="toQichiran" href="{% url 'test-question' %}">小TEST40問</a></td><td></td></tr>
+    {% endif %}
+        <tr><td>5</td><td>-</td><td><a class="toQichiran" href="{% url 'create-question2' %}">大問題登録1問</a></td><td></td></tr>
+</table>
+
+<br />
+
+<h3>週1 (日〜土)</h3>
+<table border="5" rules="all">
+    {% if testRoutineCount >= 1 %}  
+        <tr style="background-color: lightblue;"><td class="col1">1</td><td class="col2">　済　</td><td class="col3"><a class="toQichiran" href="{% url 'test-question' %}">Python3 基礎　TEST40問</a></td><td class="col4">-</td><td class="col5"></td></tr>
+    {% else %}
+        <tr><td class="col1">1</td><td class="col2">　未　</td><td class="col3"><a class="toQichiran" href="{% url 'test-question' %}">Python3 基礎　TEST40問</a></td><td class="col4">-</td><td class="col5"></td></tr>
+    {% endif %}
+
+
+    <tr><td>5</td><td>-</td><td><a class="toQichiran" href="{% url 'create-question2' %}">大問題登録1問 (基本情報技術者以外)</a></td><td></td></tr>
+
+    
+</table>
+
+<br />
+
+<h3>模索中</h3>
+<table>
+    <tr><td>8</td><td>-</td><td>数字に強く</td><td>「儲かる会社」の財務諸表～48の実例で身につく経営力・会計力 (kindle)</td></tr>
+    <tr><td>12</td><td>-</td><td><a class="toQichiran" href="{% url 'create-question2' %}">Udemy 基本情報登録</a></td><td></td></tr>
+    <tr><td>13</td><td>-</td><td>tkinter</td><td></td></tr>
+    <tr><td>16</td><td>-</td><td>入力だけで勉強していけるツール</td><td></td></tr>
+</table>
+
+
+<div class="main">
+<!--テキストバラバラ-->
+<p class="TextRandomAnime">テキストがバラバラに出現します</p>
+
+<!--タイポグラフィー-->
+<div id="wrapper">
+    <canvas id="particle"></canvas>
+</div>
+
+<div class="mv">
+    <!--  メイン全体を囲うdiv  -->
+    <div class="mv-wrap">
+      <!--   薄いレイヤー   -->
+      <div class="mv-bg"></div>
+      <!--   videoタグ   -->
+<!--<video id="video" webkit-playsinline="" playsinline="" muted="" autoplay="" loop=""
+src="/media/resource/whiteMovie.mp4"></video>-->
+<!--   動画の上に載せるテキスト   -->
+<p class="mv-txt">Chynya Site</p>
+</div>
+</div>
+
+    <div class="row">
+        <div class="col-9">
+            {% for item in object_list %}
+                <div class="p-4 m-4 bg-light border border-success rounded">
+                    <h2 class="text-success">{{ item.title }}</h2>
+                    <img src="{{ item.thumbnail.url }}" class="img-thumbnail" />
+                    <h6>カテゴリ：{{ item.category }}</h6>
+                    <div class="mt-3">
+                        <a href="{% url 'detail-book' item.pk %}">詳細へ</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <h2>評価順TOP2</h2>
+            {% for ranking_book in page_obj %}
+                <div class="p-4 m-4 bg-light border border-success rounded">
+                    <h3 class="text-success h5">{{ ranking_book.title }}</h3>
+                    <img src="{{ ranking_book.thumbnail.url }}" class="img-thumbnail" />
+                    <h6>評価：{{ ranking_book.avg_rating|floatformat:2 }}点</h6>
+                    <a href="{% url 'detail-book' ranking_book.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+            {% include 'book/components/pagination.html' %}
+        </div>
+    </div>
+</div><!--main-->
+
+
+
+{% endblock %}

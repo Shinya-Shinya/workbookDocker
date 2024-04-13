@@ -1,0 +1,26 @@
+<!--ルーティン-->
+<!-- タブ -->
+<div class="tab">
+    {% for item in categories_data %}
+    <button class="tablinks tab{{ forloop.counter }}" onclick="openTab(event, 'Tab{{ item.category.id }}')">
+        {{ item.category.name }} ({{ item.today_count }}/{{ item.target_count }} 問)
+    </button>
+    {% endfor %}
+</div>
+  
+  <!-- タブのコンテンツ -->
+    {% for category in categories %}
+    <div id="Tab{{ category.id }}" class="tabcontent">
+    
+    <!-- Quota設定フォーム -->
+    <form method="post" action="{% url 'quota_update_url' category.id %}">
+        {% csrf_token %}
+        <p>
+        <span><strong>問題登録ノルマ</strong> ({{ category.name }})</span>
+        <input type="number" name="target_count" class="quota-input" value="{{ category.quota.target_count }}"><span>問/日</span>
+        <input type="submit" value="更新">
+        </p>
+    </form>
+    </div>
+    {% endfor %}
+<!--ルーティン最後-->

@@ -1,0 +1,101 @@
+{% extends 'baseTest.html' %}
+
+
+{% block title %}TEST{% endblock %}
+
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <form action="{% url 'test-question10' %}" method="post" enctype="multipart/form-data" class="testStartButton">
+            {% csrf_token %}
+            <input type="hidden" id="test10" name="test10count" value="0">
+            <input type="hidden" id="test10" name="test10seikai" value="0">
+            <input type="hidden" id="test10" name="testShokai" value="testShokai">
+            <div class="testFlex">
+                <div class="testLeft">
+                    <p>記述問題</p>
+                </div>
+                <div class="testRight">
+                    {% if test10within10 >= 11 %}
+                    <input class="yuruFont btnTestStart" type="submit" id="button" name="button" value="10問テスト　スタート">
+                    {% else %}
+                    <input class="yuruFont btnTestStart" type="submit" value="10問テスト　スタート" disabled>
+                    <p class="over11">※11問以上の登録で使用可</p>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <form action="" method="post" enctype="multipart/form-data" class="testStartButton">
+            {% csrf_token %}
+            <input type="hidden" id="test10" name="test10count" value="0">
+            <input type="hidden" id="test10" name="test10seikai" value="0">
+            <input type="hidden" id="test10" name="testShokai" value="testShokai">
+            <div class="testFlex">
+                <div class="testLeft">
+                    <p>選択肢問題</p>
+                </div>
+                <div class="testRight">
+                    {% if test10within10Choice >= 11 %}
+                    <input class="yuruFont btnTestStart" type="submit" id="button" name="button" value="10問テスト　スタート">
+                    {% else %}
+                    <input class="yuruFont btnTestStart" type="submit" value="10問テスト　スタート" disabled>
+                    <p class="over11">※11問以上の登録で使用可</p>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        
+        <form action="{% url 'test-codepractice10' %}" method="post" enctype="multipart/form-data" class="testStartButton">
+            {% csrf_token %}
+            <input type="hidden" id="test10" name="test10count" value="0">
+            <input type="hidden" id="test10" name="test10seikai" value="0">
+            <input type="hidden" id="test10" name="testShokai" value="testShokai">
+            <div class="testFlex">
+                <div class="testLeft">
+                    <p>コード問題</p>
+                </div>
+                <div class="testRight">
+                    
+                    <input class="yuruFont btnTestStart" type="submit" id="button" name="button" value="10問テスト　スタート">
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <form action="" method="post" enctype="multipart/form-data" class="testStartButton">
+            {% csrf_token %}
+            <input type="hidden" id="test10" name="test10count" value="0">
+            <input type="hidden" id="test10" name="test10seikai" value="0">
+            <input type="hidden" id="test10" name="testShokai" value="testShokai">
+            <div class="testFlex">
+                <div class="testLeft">
+                    <p>総合問題</p>
+                </div>
+                <div class="testRight">
+                    {% if test10within10Choice >= 11 %}
+                    <input class="yuruFont btnTestStart" type="submit" id="button" name="button" value="10問テスト　スタート">
+                    {% else %}
+                    <input class="yuruFont btnTestStart" type="submit" value="10問テスト　スタート" disabled>
+                    <p class="over11">※11問以上の登録で使用可</p>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% load static %}
+<script src="{% static 'sqlapp/js/scriptQuestion.js' %}"></script>
+<script src="{% static 'sqlapp/js/testQuestion.js' %}"></script>
+
+{% include 'sqlapp/components/pagination.html' %}
+{% endblock content %}
+
+    

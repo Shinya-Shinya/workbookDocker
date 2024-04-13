@@ -1,0 +1,35 @@
+{% extends 'baseQuestionChoice.html' %}
+
+{% block title %}選択肢問題削除{% endblock %}
+{% block h1 %}選択肢問題削除{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+<div class="nav-item">
+{% if data|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif data|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+{% elif data|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question-choice' %}">選択肢問題一覧へ</a>
+</div>
+
+<br />
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">{{ object.question|truncatechars:11 }}を削除する</button>
+    </form>
+    
+{% endblock %}
+{% load static %}
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>

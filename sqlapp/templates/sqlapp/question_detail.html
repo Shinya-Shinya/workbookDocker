@@ -1,0 +1,23 @@
+{% extends 'baseQuestion.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+    <div class="p-4 m-4 bg-light border border-success rounded detailFont">
+        <h2 class="text-success detailMondaiColor">【問題】　{{ object.question|linebreaksbr }}</h2>
+        <h2 class="text-success detailKotaeColor">【答え】　{{ object.answer }}</h2>
+        <h2 class="text-success detailThumbnailColor">{{ object.thumbnail }}</h2>
+        <h2 class="text-success detailKaisetsuColor">【解説】　{{ object.explanation|linebreaksbr }}</h2>
+        <h2 class="text-success detailShosekiColor">【書籍・HP】　{{ object.shoseki }}</h2>
+        <h2 class="text-success detailShosekiPageColor">【書籍ページ・HP何問目】　{{ object.shoseki_page }}</h2>
+
+        <!--<a href="{% url 'list-question' %}" class="btn btn-primary">一覧へ</a>-->
+        <a href="{% url 'update-question' object.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'delete-question' object.pk %}" class="btn btn-primary btn-delete">削除する</a>
+        <h6 class="card-title"></h6>
+    </div>
+{% endblock %}
+{% load static %}
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>

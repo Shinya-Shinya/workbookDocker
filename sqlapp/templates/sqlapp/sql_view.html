@@ -1,0 +1,59 @@
+{% extends 'baseDataOperation.html' %}
+{% block title %}SQL and Pandas Query Interface{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+    <div class="sqlPandasTitle">
+        <p>テーブル名, データフレーム名</p>
+        <p><span class="sqlPandas3_1">記述問題: sqlapp_practice</span><span class="sqlPandas3_2">選択問題: sqlapp_practicechoice</span><span class="sqlPandas3_3">コード問題: sqlapp_codepractice</span></p>
+    </div>
+    <form method="post" id="queryForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <ul class="inputEx">
+        <li>入力例1: SELECT * FROM sqlapp_practice ORDER BY id LIMIT 1;</li>
+        <li>入力例2: SELECT question, answer FROM sqlapp_practice WHERE id BETWEEN 1 AND 20;</li>
+        </div>
+        <button type="submit" class="buttonQuery1">クエリ実行</button>
+        <button type="button" class="buttonQuery2" onclick="clearForm()">クリア</button> <!-- クリアボタンを追加 -->
+    </form>
+
+    {% if data %}
+        <div class="queryResult">
+            <h2>クエリ結果</h2>
+            <div style="overflow-x: auto;">
+                {{ data|safe }}  <!-- 安全でないコンテンツを表示する際には|safeフィルタを使用 -->
+            </div>
+        </div>
+    {% else %}
+        <div class="queryResult">
+            <h2>クエリ結果</h2>
+            <p>結果はまだありません。</p>
+        </div>
+    {% endif %}
+
+<script>
+    function clearForm() {
+        // document.getElementById('queryForm').reset();
+
+        // フォームの要素を取得
+    var form = document.getElementById('queryForm');
+
+    // input要素を取得し、それぞれの値をクリアする
+    var inputs = form.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == 'text' || inputs[i].type == 'number') {
+            inputs[i].value = '';
+        }
+    }
+
+    // textarea要素を取得し、それぞれの値をクリアする
+    var textareas = form.getElementsByTagName('textarea');
+    for (var i = 0; i < textareas.length; i++) {
+        textareas[i].value = '';
+    }
+
+    // その他のフォーム要素（例えばselect）も必要に応じてクリアする
+    }
+</script>
+{% endblock content %}
+

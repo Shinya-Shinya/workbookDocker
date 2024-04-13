@@ -1,0 +1,55 @@
+{% extends 'baseCodepractice.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+    <div class="p-4 m-4 bg-light border border-success rounded detailFont">
+        {% if object.shoseki %}
+        <h2 class="text-success detailShosekiColor">【書籍・HP】　{{ object.shoseki }}</h2>
+        {% endif %}
+        {% if object.shoseki_page %}
+        <h2 class="text-success detailShosekiPageColor">【書籍ページ・HP何問目】　{{ object.shoseki_page }}</h2>
+        {% endif %}
+        {% for question in questions %}
+            {% if question %}
+                <h2 class="text-success detailMondaiColor">【問題】　{{ question|linebreaksbr }}</h2>
+            {% endif %}
+        {% endfor %}
+
+
+        {% for thumbnailQ in thumbnailsQ %}
+            {% if thumbnailQ %}
+                <h2 class="text-success detailThumbnailColor">【画像(問題用)】　{{ thumbnailQ }}</h2>
+            {% endif %}
+        {% endfor %}
+
+        {% for req in reqs %}
+            {% if req %}
+                <h2 class="text-success detailThumbnailColor">【要件】　{{ req|linebreaksbr }}</h2>
+            {% endif %}
+        {% endfor %}
+
+        {% for answer in answers %}
+            {% if answer %}
+                <h2 class="text-success detailThumbnailColor">【正解】　{{ answer|linebreaksbr }}</h2>
+            {% endif %}
+        {% endfor %}
+
+        {% for thumbnailA in thumbnailsA %}
+            {% if thumbnailA %}
+                <h2 class="text-success detailThumbnailColor">【画像(正解用)】　{{ thumbnailA }}</h2>
+            {% endif %}
+        {% endfor %}
+
+        {% if object.explanation %}
+        <h2 class="text-success detailKaisetsuColor">【解説】　{{ object.explanation|linebreaksbr }}</h2>
+        {% endif %}
+
+        <!--<a href="{% url 'list-question' %}" class="btn btn-primary">一覧へ</a>-->
+        <a href="{% url 'update-codepractice' object.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'delete-codepractice' object.pk %}" class="btn btn-primary btn-delete">削除する</a>
+        <h6 class="card-title"></h6>
+    </div>
+{% endblock %}

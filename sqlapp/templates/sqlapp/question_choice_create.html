@@ -1,0 +1,55 @@
+{% extends 'baseQuestionChoice.html' %}
+{% load static %}
+{% block title %}選択問題作成{% endblock %}
+
+{% block content %}
+  
+{% include 'sqlapp/components/tab_content.html' %}
+
+{% if no_data_message %}
+    <p>{{ no_data_message }}</p>
+{% else %}
+<div border="1" style="border-color:lightgrey; font-size:12px; border-radius: 5px;" class="prevData">
+    <p class="prevDataTitle">1つ前の登録データ</p>
+    <p><span id="touroku1tsumaeShoseki">【{{ touroku1tsumaeShoseki|truncatechars:40 }}】　</span></p>
+    <p><span id="touroku1tsumaeQuestion">{{ touroku1tsumaeQuestion|truncatechars:40 }}　</span>
+    <span id="touroku1tsumaePage">({{ touroku1tsumaePage }})　</span>
+    <a href="../{{ touroku1tsumaeId }}/detail/">詳細</a></p>
+    <p class="prevDataEx"> ※下記、「書籍・HP」をプルダウンから選択すると、その「書籍・HP」の前回登録データが表示されます。</p>
+</div>
+{% endif %}
+
+
+{% if fromList != "nashi" %}
+
+<div class="kouritsuFontBtn">
+<!--<input id="text" type="text" value="" />-->
+<input type="button" value="アイウエ" onclick="aiue()" />
+<input type="button" value="2/アイウエ" onclick="twoOfFourAiue()" />
+<input type="button" value="2/アイウエオ" onclick="twoOfFiveAiueo()" />
+<input type="button" value="3/アイウエオ" onclick="threeOfFiveAiueo()" />
+<input type="button" value="ABCD" onclick="abcd()" />
+<input type="button" value="2/ABCD" onclick="twoOfFour()" />
+<input type="button" value="2/ABCDE" onclick="twoOfFive()" />
+<input type="button" value="3/ABCDE" onclick="threeOfFive()" />
+
+</div><!--kouritsuFontBtn-->
+
+    <form method="POST" enctype="multipart/form-data" class="yokonarabi">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        
+
+    <input type="submit" onclick="shocateFunc()" name="nameSakusei" value="作成する">
+    </form>
+
+{% endif %}
+    
+{% load static %}
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>
+<script src="{% static 'sqlapp/js/createQuestionChoice.js' %}"></script>
+<script src="{% static 'sqlapp/js/changeQuestionChoice.js' %}"></script>
+
+
+{% endblock %}

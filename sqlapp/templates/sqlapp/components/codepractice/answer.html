@@ -1,0 +1,97 @@
+<!--折りたたみ上--> 
+<div class="wrap">
+
+
+<!-- １つ目 -->
+<label for="labelAns1" class="label">▼ 答え1</label>
+<input type="checkbox" id="labelAns1" class="switch" /><button id="show-line-button" class="nextLine1">次行を表示</button>
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content contentAns1">
+<!--折りたたみ上-->
+<div class="carousel-con">
+
+<div class="flex-container">
+    <div id="answer-content"></div>
+    <textarea name="" id="" rows="10"></textarea>
+</div>
+
+<script>
+    // Django テンプレートの変数を JavaScript で扱えるようにする
+    const answerLines = "{{ questions.answer1|linebreaksbr|safe }}".split('<br>');
+</script>
+</div>
+<!--折りたたみおりたたみ下--> 
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+
+
+<!-- 2つ目 -->
+<label for="labelAns2" class="label">▼ 答え2</label>
+<input type="checkbox" id="labelAns2" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content contentAns2">
+<p>
+<!--折りたたみ上-->
+<div class="flex-container">
+<div><span>{{ questions.answer2|linebreaksbr }}</span></div>
+<textarea name="" id="" rows="10"></textarea>
+</div>
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+
+
+<!-- 3つ目 -->
+<label for="labelAns3" class="label">▼ 答え3</label>
+<input type="checkbox" id="labelAns3" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content contentAns3">
+<p>
+<!--折りたたみ上-->
+<div class="flex-container">
+<div><span>{{ questions.answer3|linebreaksbr }}</span></div>
+<textarea name="" id="" rows="10"></textarea>
+</div>
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+
+
+<!-- 4つ目 -->
+<label for="labelAns4" class="label">▼ 答え4</label>
+<input type="checkbox" id="labelAns4" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content contentAns4">
+<p>
+<!--折りたたみ上-->
+<div class="flex-container">
+<div><span>{{ questions.answer4|linebreaksbr }}</span></div>
+<textarea name="" id="" rows="10"></textarea>
+</div>
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+
+
+<!-- 5つ目 -->
+<label for="labelAns5" class="label">▼ 答え5</label>
+<input type="checkbox" id="labelAns5" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content contentAns5">
+<p>
+<!--折りたたみ上-->
+<div class="flex-container">
+<div><span>{{ questions.answer5|linebreaksbr }}</span></div>
+<textarea name="" id="" rows="10"></textarea>
+</div>
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+
+
+</div><!--wrap-->
+<!--折りたたみおりたたみ下-->

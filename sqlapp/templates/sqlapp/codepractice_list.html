@@ -1,0 +1,113 @@
+{% extends 'baseCodepractice.html' %}
+{% block title %}コード問題一覧{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+<!--折りたたみ上--> 
+<div class="wrap">
+    <!-- １つ目 -->
+    <label for="label1" class="label">▼ 検索フォームを表示</label>
+    <input type="checkbox" id="label1" class="switch" />
+
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content content2">
+<p>
+<!--折りたたみ上--> 
+
+
+<div class="font_size">
+<!--findアプリ-->
+<div class="container flex">
+    <!--  <div style="display:inline-flex"> -->
+
+    <div class="left"><form action="{% url 'list-codepractice' %}" method="post" class="form-inline"></div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p id="selectanswers"></p>
+
+    <div class="searchBtn right"><input type="submit" name="nameFind" value="click" class="btn btn-primary mt-2"></div>
+    </form>
+</div><!--container-->
+<!--findアプリ-->
+</div>
+
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+</div><!--wrap-->
+<!--折りたたみおりたたみ下-->
+
+
+
+
+   <div class="nav-item">
+    <h2>問題一覧：　{{ data|length }}　問　　</h2>
+    </div>
+    
+    {% for item in data2 %}
+    <a href="{% url 'detail-codepractice' item.pk %}">
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <h2><span style="font-weight:bold;">[{{ item.shoseki|truncatechars:50 }}]</span></h2>
+        <h2><span style="font-weight:bold;">{{ item.question1|truncatechars:50 }}</h2>
+        <h3>{{ item.answer1|truncatechars:50 }}</h3>
+        <h3>{{ item.category|truncatechars:25 }}</h3>
+        <div class="flex">
+            <div class="mt-3 nav-item to-shousai left leftSpace"><!--左-->
+                
+            </div><!--左-->
+                
+        </div>
+    
+    </div>
+    </a>
+    {% endfor %}
+
+
+
+{% load static %}
+<script src="{% static 'book/js/scriptQuestion.js' %}"></script>
+
+
+<ul class="pagination justify-content-center">
+    {% if data2.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'list-question' %}">&laquo; first</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'list-question' %}{{data2.previous_page_number}}">&laquo; prev</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link">&laquo; first</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">&laquo; prev</a>
+    </li>
+    {% endif %}
+    <li class="page-item">
+        <a class="page-link">
+            {{data2.number}}/{{data2.paginator.num_pages}}</a>
+    </li>
+    {% if data2.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'list-question' %}{{data2.next_page_number}}">next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'list-question' %}{{data2.paginator.num_pages}}">last &raquo;</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link">next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">last &raquo;</a>
+    </li>
+    {% endif %}
+</ul>
+
+
+
+{% endblock content %}
+
+    

@@ -1,0 +1,96 @@
+<div class="tabs">
+    <label for="labelAns1" class="tab tab1">{{ questions.answerTitle1 }}</label>
+    <label for="labelAns2" class="tab tab2">{{ questions.answerTitle2 }}</label>
+    <label for="labelAns3" class="tab tab3">{{ questions.answerTitle3 }}</label>
+    <label for="labelAns4" class="tab tab4">{{ questions.answerTitle4 }}</label>
+    <label for="labelAns5" class="tab tab5">{{ questions.answerTitle5 }}</label>
+    <!-- 他のタブも同様に -->
+</div>
+
+<div class="content-area">
+    <input type="checkbox" id="labelAns1" class="switchAns1" checked />
+    <div class="contentAnsWrapper">
+        <button id="show-line-button" class="nextLine nextLineAns1">次行を表示</button>
+        <button id="hide-line-button1" class="hideLine hideLineAns1">行を隠す</button>
+    </div>
+    
+    <div class="content contentAns contentAns1">
+        <div class="carousel-con">
+
+            <div class="flex-container">
+                <div id="answer-content"></div>
+                <textarea name="" id="" rows="10"></textarea>
+            </div>
+            
+            <script>
+                // Django テンプレートの変数を JavaScript で扱えるようにする
+                const answerLines = "{{ questions.answer1|linebreaksbr|safe }}".split('<br>');
+            </script>
+        </div>            
+    </div>
+
+    <input type="checkbox" id="labelAns2" class="switchAns2"/>
+    <div class="contentAnsWrapper">
+    <button id="show-line-button2" class="nextLine nextLineAns2">次行を表示2</button>
+    <button id="hide-line-button2" class="hideLine hideLineAns2">行を隠す2</button>
+    </div>
+    <div class="content contentAns contentAns2">
+        <div class="flex-container">
+            <div id="answer-content2"></div>
+            <textarea name="" id="" rows="10"></textarea>
+        </div>
+        <script>
+            // Django テンプレートの変数を JavaScript で扱えるようにする
+            const answerLines2 = "{{ questions.answer2|linebreaksbr|safe }}".split('<br>');
+        </script>
+    </div>
+
+    <input type="checkbox" id="labelAns3" class="switchAns3"/>
+    <div class="contentAnsWrapper">
+    <button id="show-line-button3" class="nextLine nextLineAns3">次行を表示3</button>
+    <button id="hide-line-button3" class="hideLine hideLineAns3">行を隠す3</button>
+    </div>
+    <div class="content contentAns contentAns3">
+        <div class="flex-container">
+            <div id="answer-content3"></div>
+            <textarea name="" id="" rows="10"></textarea>
+        </div>
+        <script>
+            // Django テンプレートの変数を JavaScript で扱えるようにする
+            const answerLines3 = "{{ questions.answer3|linebreaksbr|safe }}".split('<br>');
+        </script>
+    </div>
+
+    <input type="checkbox" id="labelAns4" class="switchAns4"/>
+    <div class="contentAnsWrapper">
+    <button id="show-line-button4" class="nextLine nextLineAns4">次行を表示4</button>
+    <button id="hide-line-button4" class="hideLine hideLineAns4">行を隠す4</button>
+    </div>
+    <div class="content contentAns contentAns4">
+        <div class="flex-container">
+            <div id="answer-content4"></div>
+            <textarea name="" id="" rows="10"></textarea>
+        </div>
+        <script>
+            // Django テンプレートの変数を JavaScript で扱えるようにする
+            const answerLines4 = "{{ questions.answer4|linebreaksbr|safe }}".split('<br>');
+        </script>
+    </div>
+
+    <input type="checkbox" id="labelAns5" class="switchAns5"/>
+    <div class="contentAnsWrapper">
+    <button id="show-line-button5" class="nextLine nextLineAns5">次行を表示5</button>
+    <button id="hide-line-button5" class="hideLine hideLineAns5">行を隠す5</button>
+    </div>
+    <div class="content contentAns contentAns5">
+        <div class="flex-container">
+            <div id="answer-content5"></div>
+            <textarea name="" id="" rows="10"></textarea>
+        </div>
+        <script>
+            // Django テンプレートの変数を JavaScript で扱えるようにする
+            const answerLines5 = "{{ questions.answer5|linebreaksbr|safe }}".split('<br>');
+        </script>
+    </div>
+    
+</div>

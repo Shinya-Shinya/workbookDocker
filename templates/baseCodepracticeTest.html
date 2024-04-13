@@ -1,0 +1,437 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{% static 'sqlapp/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'sqlapp/css/styleCodepracticeTest.css' %}">
+
+     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/3.6.0/jquery.min.js"></script> -->
+    
+        <!-- 1/14 codepractice_test.html -->
+            <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <style>
+        
+       
+
+        .carousel-container {
+            display: flex;
+            justify-content: space-between; /* 必要に応じて調整 */
+            height: 220px;
+            overflow-y: auto; /* 高さが超える場合に垂直スクロールを有効にする */
+        }
+
+        .slick-list {
+            /* height: 95%; */
+            height: 300px;
+            overflow-y: auto; /* 高さが超える場合に垂直スクロールを有効にする */
+        }
+        .slick-slide {
+            /* height: 95%; */
+            /* height: 300px; */
+            overflow-y: auto; /* 高さが超える場合に垂直スクロールを有効にする */
+        }
+        .slick-slider {
+            margin-bottom: 0;
+        }
+        #label0, #label1, #label2 {
+            display:none;
+        }
+
+
+      
+        @media screen and (max-width: 1080px) {
+            .carousel0 {
+            width: 40%;
+            margin: 0 auto;
+
+            }
+            .carousel0_2 {
+                width: 40%;
+                margin: 0 auto;
+            }
+        }
+        @media screen and (min-width: 1080px) {
+            .carousel0 {
+            width: 30%;
+            margin: 0 auto;
+
+            }
+            .carousel0_2 {
+                width: 60%;
+                margin: 0 auto;
+            }
+        }
+        
+        .carousel1 {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .carousel2 {
+            width: 90%;
+            margin: 0 auto;
+        }
+   
+
+        /* 画像に合わせてカルーセルの高さを調整 */
+        .slick-slide {
+            /* height: 215px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            font-size: 10px;
+            padding: 12px;
+            padding: 5px;
+            
+            overflow-y: auto; /* 高さが超える場合に垂直スクロールを有効にする */
+        }
+
+        .slick-slide div {
+        display: flex;      /* Flexboxレイアウトを適用 */
+        justify-content: center !important; /* 水平方向の中央揃え */
+        align-items: center; /* 垂直方向の中央揃え */
+        width: 100%;       /* divの幅をスライドの幅に合わせる */
+    }
+
+    .slick-slide img {
+        max-height: 100%; 
+        max-width: 100%; 
+        width: auto;  
+        height: auto; 
+        margin: auto; /* 画像を中央に配置 */
+    }
+
+        /* 背景の色に合わせて前後の矢印の色を調整 */
+        .slick-prev:before,
+        .slick-next:before {
+            color: #000;
+        }
+
+        .c0_1_2 {
+            display: block;
+        }
+        .c1_2 {
+            display: none;
+    }
+        .c2_1 {
+            display: none;
+        }
+
+
+        .wrap {
+    /* margin: 2em 0; */
+    padding: 0;
+  }
+  
+  .wrap .label0, .wrap .label1,.wrap .label2, .wrap .labelAns1, .wrap .labelAns2, .wrap .labelAns3, .wrap .labelAns4, .wrap .labelAns5 {
+    display: block;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: #999;
+    cursor: pointer;
+    font-size: 14px !important;
+  }
+  .label {
+    font-size: 14px;
+  }
+
+.content-area input {
+    display: none;
+}
+
+  
+  .nextLineAns1 {
+    display: block;
+  }
+  .nextLineAns2 {
+    display: none;
+  }
+  .nextLineAns3 {
+    display: none;
+  }
+  .nextLineAns4 {
+    display: none;
+  }
+  .nextLineAns5 {
+    display: none;
+  }
+
+  .hideLineAns1 {
+    display: block;
+  }
+  .hideLineAns2 {
+    display: none;
+  }
+  .hideLineAns3 {
+    display: none;
+  }
+  .hideLineAns4 {
+    display: none;
+  }
+  .hideLineAns5 {
+    display: none;
+  }
+
+  .content-area {
+    border: solid 3px grey;
+    font-size: 14px;
+  }
+  #answer-content {
+        font-size: 14px;
+  }
+
+  /* モーダルウィンドウのCSS */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        /* height: 100%; */
+        height: 50%;
+        overflow: auto; 
+        /* background-color: rgba(0,0,0,0.4); */
+        background-color: rgba(0,0,0,1);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        /* margin: 15% auto; */
+        margin: 1% auto;
+        /* padding: 20px; */
+        padding: 1%;
+        border: 1px solid #888;
+        width: 80%;
+        height: 318px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* モーダル内の要素を1.2倍に拡大 */
+    #modal-body {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+    }
+
+    .flex-container {
+        display: flex; /* Flexbox を有効にする */
+        align-items: center; /* 子要素を垂直方向の中央に配置する */
+        justify-content: space-between; /* 子要素の間に均等なスペースを作る */
+    }
+
+    .flex-container p {
+        margin-right: 10px; /* `<p>` と `<textarea>` の間のスペースを調整 */
+    }
+
+    .flex-container div {
+        display: flex; /* Flexbox を有効にする */
+        justify-content: center; /* 水平方向に中央揃え */
+        flex-grow: 1; /* 必要に応じて、この div が利用可能な追加スペースを埋めるようにする */
+    }
+
+    .flex-container textarea {
+        /*flex-grow: 1;*/ /* `<textarea>` がコンテナの残りのスペースを埋めるようにする */
+        width: 50%;
+        height: 95%;
+        margin: 3px;
+    }
+    .slick-dots {
+        height: 25px;
+    }
+
+
+
+    /* 1/13 タブ */
+    
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        background-color: #ddd;
+        height: 30px;
+    }
+
+    .tab {
+        padding: 5px;
+        padding-bottom:0;
+        cursor: pointer;
+    }
+
+    .content-area {
+        /* 必要に応じて最小高さを設定 */
+        min-height: 200px;
+    }
+
+    .contentAns {
+        /* 初期状態ではすべてのcontentAnsを非表示に */
+        display: none;
+    }
+
+    .contentAns1 {
+        /* 最初のタブのコンテンツだけ表示 */
+        display: block;
+    }
+
+    .contentAnsWrapper {
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    
+}
+</style>
+<!-- 1/14 codepractice_test.html終了 -->
+
+
+
+    </head>
+    <body>
+    <div id="navigation">
+        <nav class="navbar navbar-dark bg-success sticky-top">
+            <div class="navbar-nav d-flex flex-row nav-item">
+                <div class="nav-one nav-one-home">
+                    <a class="nav-link mx-3 rotateX" href="{% url 'list-question' %}">HOME</a>
+                </div>
+
+                <!--1/2-->
+                <div class="nav-one nav-one-practice">
+                    <a class="nav-link mx-3 rotateX" href="javascript:void(0);" id="homeLink">記述問題</a>
+                    <!-- 隠しメニュー項目 -->
+                    <div class="hiddenMenu" id="hiddenMenu" style="display: none;">
+                        <a href="{% url 'list-question' %}">リスト</a>
+                        <a href="{% url 'create-question' %}">登録</a>
+                    </div>
+                </div>
+                <div class="nav-one nav-one-practicechoice">
+                    <a class="nav-link mx-3 rotateX" href="javascript:void(0);" id="homeLink2">選択問題</a>
+                    <!-- 隠しメニュー項目 -->
+                    <div class="hiddenMenu" id="hiddenMenu2" style="display: none;">
+                        <a href="{% url 'list-question-choice' %}">リスト</a>
+                        <a href="{% url 'create-question-choice' %}">登録</a>
+                    </div>
+                </div>
+                <div class="nav-one nav-one-codepractice">
+                    <a class="nav-link mx-3 rotateX" href="javascript:void(0);" id="homeLink3">コード問題</a>
+                    <!-- 隠しメニュー項目 -->
+                    <div class="hiddenMenu" id="hiddenMenu3" style="display: none;">
+                        <a href="{% url 'list-codepractice' %}">リスト</a>
+                        <a href="{% url 'create-codepractice' %}">登録</a>
+                    </div>
+                </div>             
+                <div class="nav-one nav-one-test"><a class="nav-link mx-3 rotateX" href="{% url 'test-question' %}">テスト</a></div>
+                <div class="nav-one nav-one-dataoperation">
+                    <a class="nav-link mx-3 rotateX" href="{% url 'sql_view' %}">データ操作</a>
+                </div>          
+            </div>
+        </nav>
+
+        {% include 'sqlapp/components/tab_content.html' %}
+    </div>
+    <button id="toggleButton">▲</button>
+
+        <div class="p-4">
+            <h1>{% block h1 %}{% endblock %}</h1>
+            {% block content %}{% endblock content %}
+        </div>
+        <!-- <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script> -->
+        <script>
+                
+            document.getElementById('homeLink').addEventListener('click', function() {
+                let hiddenMenu = document.getElementById('hiddenMenu');
+                let hiddenMenu2 = document.getElementById('hiddenMenu2');
+                let hiddenMenu3 = document.getElementById('hiddenMenu3');
+                if (hiddenMenu.style.display === 'block') {
+                    hiddenMenu.style.display = 'none';
+                    hiddenMenu2.style.display = 'none';
+                    hiddenMenu3.style.display = 'none';
+                } else {
+                    hiddenMenu.style.display = 'block';
+                    hiddenMenu2.style.display = 'none';
+                    hiddenMenu3.style.display = 'none';
+                }
+            });
+
+            document.getElementById('homeLink2').addEventListener('click', function() {
+                let hiddenMenu = document.getElementById('hiddenMenu');
+                let hiddenMenu2 = document.getElementById('hiddenMenu2');
+                let hiddenMenu3 = document.getElementById('hiddenMenu3');
+                if (hiddenMenu2.style.display === 'block') {
+                    hiddenMenu2.style.display = 'none';
+                    hiddenMenu.style.display = 'none';
+                    hiddenMenu3.style.display = 'none';
+                } else {
+                    hiddenMenu2.style.display = 'block';
+                    hiddenMenu.style.display = 'none';
+                    hiddenMenu3.style.display = 'none';
+                }
+            });
+
+            document.getElementById('homeLink3').addEventListener('click', function() {
+                let hiddenMenu = document.getElementById('hiddenMenu');
+                let hiddenMenu2 = document.getElementById('hiddenMenu2');
+                let hiddenMenu3 = document.getElementById('hiddenMenu3');
+                if (hiddenMenu3.style.display === 'block') {
+                    hiddenMenu3.style.display = 'none';
+                    hiddenMenu.style.display = 'none';
+                    hiddenMenu2.style.display = 'none';
+                } else {
+                    hiddenMenu3.style.display = 'block';
+                    hiddenMenu.style.display = 'none';
+                    hiddenMenu2.style.display = 'none';
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+            let homeLink = document.getElementById('homeLink');
+            let homeLink2 = document.getElementById('homeLink2');
+            let homeLink3 = document.getElementById('homeLink3');
+            let hiddenMenu = document.getElementById('hiddenMenu');
+            let hiddenMenu2 = document.getElementById('hiddenMenu2');
+            let hiddenMenu3 = document.getElementById('hiddenMenu3');
+
+            // クリックされた要素がhomeLink, homeLink2, homeLink3またはその子要素でないかチェック
+            if (!homeLink.contains(event.target) && !homeLink2.contains(event.target) && !homeLink3.contains(event.target)) {
+                hiddenMenu.style.display = 'none';
+                hiddenMenu2.style.display = 'none';
+                hiddenMenu3.style.display = 'none';
+            }
+        });
+        </script>
+        <script>
+            document.getElementById('toggleButton').addEventListener('click', function() {
+                var navigation = document.getElementById('navigation');
+                if (navigation.style.display === 'none') {
+                    navigation.style.display = 'block';
+                } else {
+                    navigation.style.display = 'none';
+                }
+            });
+            // 初期状態でナビゲーションを非表示にする
+            // document.getElementById('navigation').style.display = 'none';
+
+        </script>
+        <!--マルチページ-->
+        <script src="{% static 'sqlapp/js/tabFunction.js' %}"></script>
+    </body>
+</html>

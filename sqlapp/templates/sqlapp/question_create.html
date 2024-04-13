@@ -1,0 +1,42 @@
+{% extends 'baseQuestion.html' %}
+{% load static %}
+{% block title %}記述問題作成{% endblock %}
+{% block content %}
+{% include 'sqlapp/components/tab_content.html' %}
+
+{% if no_data_message %}
+    <p>{{ no_data_message }}</p>
+{% else %}
+<div border="1" style="border-color:lightgrey; font-size:12px; border-radius: 5px;" class="prevData">
+    <p class="prevDataTitle">1つ前の登録データ</p>
+    <p><span id="touroku1tsumaeShoseki">【{{ touroku1tsumaeShoseki|truncatechars:40 }}】　</span></p>
+    <p><span id="touroku1tsumaeQuestion">{{ touroku1tsumaeQuestion|truncatechars:40 }}　</span>
+    <span id="touroku1tsumaePage">({{ touroku1tsumaePage }})　</span>
+    <a href="../{{ touroku1tsumaeId }}/detail/">詳細</a></p>
+    <p class="prevDataEx"> ※下記、「書籍・HP」をプルダウンから選択すると、その「書籍・HP」の前回登録データが表示されます。</p>
+</div>
+{% endif %}
+
+
+<div class="allForm">
+    <form method="POST" enctype="multipart/form-data" class="yokonarabi">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    <input type="submit" onclick="shocateFunc()" name="nameSakusei" value="作成する" class="btnCreate">
+    </form>
+</div>
+
+<script src="{% static 'sqlapp/js/listCreatePulldown.js' %}"></script>
+<script src="{% static 'sqlapp/js/createQuestion.js' %}"></script>
+<script src="{% static 'sqlapp/js/changeQuestion.js' %}"></script>
+<script>
+    let gken = 'G検定'
+    let gkenCate = document.getElementById("id_category");
+    let gkenShose = document.getElementById("id_shoseki");
+    if(gkenCate == gken){
+        gkenShose.value = "ディープラーニングG検定ジェネラリスト要点整理テキスト&問題集";
+    }
+</script>
+
+{% endblock %}
