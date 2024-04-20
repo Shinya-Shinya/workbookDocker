@@ -1,0 +1,6 @@
+Django==3.2.12
+Psycopg2-binary==2.9.1
+django-mathfilters
+django_pandas
+django-betterforms
+Pillow
