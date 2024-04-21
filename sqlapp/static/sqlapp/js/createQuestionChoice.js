@@ -861,5 +861,6 @@ function appearAuto() {
         categoryAutoText = 'Python3エンジニア認定基礎試験';
         categoryAuto.innerText = categoryAutoText;
         }
+    
 }
 

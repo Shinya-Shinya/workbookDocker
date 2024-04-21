@@ -11,6 +11,8 @@ from datetime import date, timedelta
 
 from django.utils import timezone
 
+from django.core.exceptions import ValidationError
+
 RATE_CHOICES = [(x, str(x)) for x in range(0, MAX_RATE + 1)]
 
 
@@ -45,7 +47,6 @@ class Quota(models.Model):
 
     def __str__(self):
         return f"{self.category.name} - {self.target_count}"
-
 
 
 class Practice(models.Model):
